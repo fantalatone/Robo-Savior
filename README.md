@@ -1,3 +1,5 @@
 # Place Holder
 
-Nemo / FantaLaTone / miguelangel0 / Godot 4.2 / GMTK 2024 Game Jam
+A game made for the 2024 GMTK Game Jam
+
+Wild Fireflies / FantaLaTone / MiguelAngel0 / Nemo / Asuriダ / Godot 4.2
