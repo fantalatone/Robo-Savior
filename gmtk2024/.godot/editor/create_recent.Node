@@ -1,0 +1,14 @@
+Node3D
+MeshInstance3D
+CollisionShape3D
+Area3D
+RayCast3D
+Marker3D
+SpotLight3D
+CSGBox3D
+CSGCombiner3D
+CharacterBody3D
+CanvasLayer
+ColorRect
+TextureRect
+Control

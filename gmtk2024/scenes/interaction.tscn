@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlyv2dtgqq0v8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gyine"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cj3wm"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l0ujg"]
+material = SubResource("StandardMaterial3D_cj3wm")
+size = Vector3(0.5, 0.1, 0.2)
+
+[node name="Interaction" type="Area3D"]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gyine")
+
+[node name="Visual" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_l0ujg")

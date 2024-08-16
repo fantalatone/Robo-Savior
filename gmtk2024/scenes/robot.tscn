@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bp04jlmywhkvs"]
+
+[ext_resource type="Script" path="res://scripts/Robot.gd" id="1_hhfwq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m748r"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a2kyo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ta5h3"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_djnlk"]
+material = SubResource("StandardMaterial3D_ta5h3")
+
+[node name="Robot" type="CharacterBody3D"]
+script = ExtResource("1_hhfwq")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_m748r")
+
+[node name="Visual" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_a2kyo")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+
+[node name="Gun" type="MeshInstance3D" parent="Camera"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, -0.5, -0.5, -0.75)
+mesh = SubResource("BoxMesh_djnlk")
+skeleton = NodePath("../..")
+
+[node name="Gun Ray" type="RayCast3D" parent="Camera/Gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+target_position = Vector3(0, 0, -999)
