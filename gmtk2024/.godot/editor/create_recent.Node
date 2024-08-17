@@ -1,5 +1,5 @@
-SpotLight3D
 Node3D
+SpotLight3D
 Camera3D
 CSGBox3D
 CSGCombiner3D
@@ -12,4 +12,3 @@ RigidBody3D
 VehicleBody3D
 RayCast3D
 Timer
-AnimationPlayer

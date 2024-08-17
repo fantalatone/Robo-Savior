@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://4wv7r7t1cxy8"]
+[gd_scene load_steps=5 format=3 uid="uid://4wv7r7t1cxy8"]
 
 [ext_resource type="PackedScene" uid="uid://cq0v0rtmhbjop" path="res://interior_map.tscn" id="1_dlk24"]
 [ext_resource type="PackedScene" uid="uid://c50dea8otgpq" path="res://scenes/player.tscn" id="2_gwn72"]
+[ext_resource type="PackedScene" uid="uid://d2k5o7e0bm87j" path="res://scenes/item_interaction.tscn" id="3_c44iu"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_hdesx"]
 
 [node name="Interior" type="Node3D"]
 
 [node name="Interior Map" parent="." instance=ExtResource("1_dlk24")]
 
 [node name="Player" parent="." instance=ExtResource("2_gwn72")]
+
+[node name="Item Interaction" parent="." instance=ExtResource("3_c44iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 3.75)
+item_type = 1
+item_mesh = SubResource("PrismMesh_hdesx")

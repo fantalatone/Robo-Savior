@@ -13,3 +13,6 @@ res://ufo.tscn
 res://UFO.gd
 res://interior_map.tscn
 res://interior.tscn
+res://scenes/player.tscn
+res://scripts/tools/Extinguisher.gd
+res://Item.gd
