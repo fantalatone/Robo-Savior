@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4wv7r7t1cxy8"]
 
-[ext_resource type="PackedScene" uid="uid://cq0v0rtmhbjop" path="res://interior_map.tscn" id="1_dlk24"]
+[ext_resource type="PackedScene" uid="uid://cq0v0rtmhbjop" path="res://scenes/interior_map.tscn" id="1_dlk24"]
 [ext_resource type="PackedScene" uid="uid://c50dea8otgpq" path="res://scenes/player.tscn" id="2_gwn72"]
 
 [node name="Interior" type="Node3D"]

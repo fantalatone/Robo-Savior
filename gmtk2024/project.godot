@@ -17,7 +17,7 @@ config/features=PackedStringArray("4.3", "Mobile")
 
 [autoload]
 
-ScaleManager="*res://ScaleController.gd"
+ScaleManager="*res://scripts/ScaleController.gd"
 
 [global_group]
 

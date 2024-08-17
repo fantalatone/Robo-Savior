@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://cyy2edoh16aya"]
 
 [ext_resource type="PackedScene" uid="uid://bp04jlmywhkvs" path="res://scenes/robot.tscn" id="1_vjdj5"]
+[ext_resource type="Material" uid="uid://lu3j6qykuilm" path="res://materials/landscape.tres" id="2_qr18j"]
 [ext_resource type="PackedScene" uid="uid://c6u3rwqla0qjk" path="res://scenes/gui.tscn" id="2_sjlp1"]
-[ext_resource type="PackedScene" uid="uid://db8fsdr8gv0ld" path="res://scenes/prototype_inside.tscn" id="3_2vkjo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2nw3"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -81,10 +81,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_o4xme")
 
 [node name="Visual" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, 0, 0)
+material_override = ExtResource("2_qr18j")
 mesh = SubResource("PlaneMesh_tbscy")
 
-[node name="Prototype Inside" parent="." instance=ExtResource("3_2vkjo")]
+[node name="Prototype Inside" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.25, 0)
+script = null
 
 [node name="GUI Layer" type="CanvasLayer" parent="."]
 
