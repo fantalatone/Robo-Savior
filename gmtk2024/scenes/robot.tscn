@@ -1,10 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bp04jlmywhkvs"]
 
 [ext_resource type="Script" path="res://scripts/Robot.gd" id="1_hhfwq"]
+[ext_resource type="PackedScene" uid="uid://tjb8561r0crf" path="res://assets/blender/Robot.blend" id="2_2uj77"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m748r"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_a2kyo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ta5h3"]
 albedo_color = Color(0, 0, 0, 1)
@@ -19,18 +18,20 @@ script = ExtResource("1_hhfwq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_m748r")
 
-[node name="Visual" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_a2kyo")
+[node name="Mesh" parent="." instance=ExtResource("2_2uj77")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.25, 0)
 
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
-
-[node name="Gun" type="MeshInstance3D" parent="Camera"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, -0.5, -0.5, -0.75)
+[node name="Gun" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, -1.25, 2.75, -0.75)
 mesh = SubResource("BoxMesh_djnlk")
-skeleton = NodePath("../..")
 
-[node name="Gun Ray" type="RayCast3D" parent="Camera/Gun"]
+[node name="Gun Ray" type="RayCast3D" parent="Gun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 target_position = Vector3(0, 0, -999)
+
+[node name="Spring" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.690926, 0.533819, 0, -0.185133, 1.99224, 0, 2.5, -4.76837e-07)
+spring_length = 5.0
+
+[node name="Camera" type="Camera3D" parent="Spring"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 5)

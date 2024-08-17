@@ -1,4 +1,5 @@
 Node3D
+SpringArm3D
 MeshInstance3D
 CollisionShape3D
 Area3D
@@ -11,4 +12,3 @@ CharacterBody3D
 CanvasLayer
 ColorRect
 TextureRect
-Control
