@@ -16,7 +16,6 @@ var is_on_ladder: bool = false
 
 var is_being_controlled : bool = true
 var is_holding_item : bool = false
-var is_fixing_problems : bool = false
 
 var holding_item_type : Interaction.ITEM_TYPE
 
@@ -50,21 +49,23 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and is_being_controlled:
 		if event.is_pressed():
-			handle_interactions()
+			if not handle_interactions() and is_holding_item:
+				use_item()
 		if event.is_released():
-			if is_fixing_problems: is_fixing_problems = false
+			pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and is_being_controlled:
 		update_camera_and_body(event.relative)
 
-func handle_interactions() -> void:
+func handle_interactions() -> bool:
 	if INTERACTION_RAY.is_colliding():
 		var obj = INTERACTION_RAY.get_collider()
-		if obj.is_in_group("Items"):
+		if obj.is_in_group("Items"): 
 			interact_with_items(obj)
-		if obj.is_in_group("Problems"):
-			interact_with_problems(obj)
+			return true
+		return false
+	return false
 
 func interact_with_items( interaction : ItemInteraction ) -> void:
 	if not is_holding_item:
@@ -78,10 +79,13 @@ func interact_with_items( interaction : ItemInteraction ) -> void:
 		holding_item_type = Interaction.ITEM_TYPE.NULL
 		is_holding_item = false
 
-func interact_with_problems( problem : ProblemInteraction ) -> void:
-	if problem.item_type == holding_item_type:
-		is_fixing_problems = true
-
+func use_item() -> void:
+	match holding_item_type:
+		Interaction.ITEM_TYPE.BLOWTORCH:
+			print("Fire!")
+		Interaction.ITEM_TYPE.DUCT_TAPE:
+			print("I hope it keeps it!")
+		
 func update_camera_and_body( relative : Vector2 ) -> void:
 	rotation_degrees.y += relative.x * -1 * MOUSE_SENSIVITY
 	camera_pitch += relative.y * -1 * MOUSE_SENSIVITY
