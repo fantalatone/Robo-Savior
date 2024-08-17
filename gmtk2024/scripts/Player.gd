@@ -15,6 +15,7 @@ var is_on_ladder: bool = false
 @onready var HAND : Marker3D = $Camera/Hand
 
 var is_holding_something : bool = false
+var is_being_controlled : bool = true
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -23,14 +24,14 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
+
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	if is_on_ladder:
+	if is_on_ladder and is_being_controlled:
 		velocity.y = -direction.z * SPEED
 	
-	if direction:
+	if direction and is_being_controlled:
 		velocity.x = direction.x * SPEED
 		if not is_on_ladder:
 			velocity.z = direction.z * SPEED
@@ -44,12 +45,12 @@ func _physics_process(delta: float) -> void:
 		get_tree().quit()
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and is_being_controlled:
 		if event.is_pressed():
 			handle_item()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and is_being_controlled:
 		update_camera_and_body(event.relative)
 
 func handle_item() -> void:
@@ -69,3 +70,11 @@ func update_camera_and_body( relative : Vector2 ) -> void:
 	camera_pitch += relative.y * -1 * MOUSE_SENSIVITY
 	camera_pitch = clamp(camera_pitch, -70, 70)
 	CAM.rotation_degrees.x = camera_pitch
+
+func _disable_input() -> void:
+	CAM.clear_current()
+	is_being_controlled = false
+
+func _enable_input() -> void:
+	CAM.make_current()
+	is_being_controlled = true

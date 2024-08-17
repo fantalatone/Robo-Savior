@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://db8fsdr8gv0ld"]
+[gd_scene load_steps=4 format=3 uid="uid://db8fsdr8gv0ld"]
 
 [ext_resource type="PackedScene" uid="uid://c50dea8otgpq" path="res://scenes/player.tscn" id="1_taded"]
-[ext_resource type="PackedScene" uid="uid://bjcd2pdl3nide" path="res://scenes/ladder.tscn" id="2_8dyir"]
 [ext_resource type="PackedScene" uid="uid://dlyv2dtgqq0v8" path="res://scenes/interaction.tscn" id="3_myq6q"]
-[ext_resource type="Script" path="res://scripts/Interaction.gd" id="4_bbi31"]
 [ext_resource type="PackedScene" uid="uid://c6u3rwqla0qjk" path="res://scenes/gui.tscn" id="4_tm8c8"]
 
 [node name="Prototype Inside" type="Node3D"]
@@ -53,18 +51,13 @@ size = Vector3(5, 2.75, 5)
 [node name="Player" parent="." instance=ExtResource("1_taded")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0.25)
 
-[node name="Ladder" parent="." instance=ExtResource("2_8dyir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
-
 [node name="Interactions" type="Node3D" parent="."]
 
 [node name="Interaction" parent="." groups=["Interactions"] instance=ExtResource("3_myq6q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.25, 0)
-script = ExtResource("4_bbi31")
 
 [node name="Interaction2" parent="." instance=ExtResource("3_myq6q")]
 transform = Transform3D(1, 0, 0, 0, 3.6, 0, 0, 0, 1, 0.25, 1, 3.5)
-script = ExtResource("4_bbi31")
 type = 1
 
 [node name="GUI Layer" type="CanvasLayer" parent="."]
