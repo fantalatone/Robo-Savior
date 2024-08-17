@@ -9,8 +9,6 @@ const JUMP_VELOCITY = 4.5
 @onready var CAM : Camera3D = $Camera
 var camera_pitch : float = 0.0
 
-var is_on_ladder: bool = false
-
 @onready var INTERACTION_RAY : RayCast3D = $Camera/Interaction
 @onready var HAND : Marker3D = $Camera/Hand
 
@@ -20,7 +18,6 @@ var is_holding_item : bool = false
 var holding_item_type : Interaction.ITEM_TYPE
 
 func _ready() -> void:
-	#pass
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
@@ -30,13 +27,9 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-	if is_on_ladder and is_being_controlled:
-		velocity.y = -direction.z * SPEED
-	
 	if direction and is_being_controlled:
 		velocity.x = direction.x * SPEED
-		if not is_on_ladder:
-			velocity.z = direction.z * SPEED
+		velocity.z = direction.z * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -85,7 +78,7 @@ func use_item() -> void:
 			print("Fire!")
 		Interaction.ITEM_TYPE.DUCT_TAPE:
 			print("I hope it keeps it!")
-		
+
 func update_camera_and_body( relative : Vector2 ) -> void:
 	rotation_degrees.y += relative.x * -1 * MOUSE_SENSIVITY
 	camera_pitch += relative.y * -1 * MOUSE_SENSIVITY
