@@ -1,1 +1,11 @@
-build
+gmtk2024/.godot/
+
+gmtk2024/.import/
+gmtk2024/export.cfg
+gmtk2024/export_presets.cfg
+
+gmtk2024/*.translation
+
+gmtk2024/.mono/
+gmtk2024/data_*/
+gmtk2024/mono_crash.*.json

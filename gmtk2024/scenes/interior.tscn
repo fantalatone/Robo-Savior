@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6lar545dkqe1"]
+
+[ext_resource type="PackedScene" uid="uid://cldqlmff0vkjw" path="res://scenes/interior_map.tscn" id="1_dlk24"]
+[ext_resource type="PackedScene" uid="uid://c50dea8otgpq" path="res://scenes/player.tscn" id="2_gwn72"]
+[ext_resource type="PackedScene" uid="uid://d2k5o7e0bm87j" path="res://scenes/item_interaction.tscn" id="3_c44iu"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_hdesx"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nfqd4"]
+
+[node name="Interior" type="Node3D"]
+
+[node name="Interior Map" parent="." instance=ExtResource("1_dlk24")]
+
+[node name="Player" parent="." instance=ExtResource("2_gwn72")]
+
+[node name="Item Interaction" parent="." instance=ExtResource("3_c44iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 3.75)
+item_type = 1
+item_mesh = SubResource("PrismMesh_hdesx")
+
+[node name="Item Interaction2" parent="." instance=ExtResource("3_c44iu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 3.75)
+item_type = 1
+item_mesh = SubResource("CylinderMesh_nfqd4")

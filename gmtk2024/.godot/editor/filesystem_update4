@@ -16,3 +16,11 @@ res://interior.tscn
 res://scenes/player.tscn
 res://scripts/tools/Extinguisher.gd
 res://Item.gd
+<<<<<<< HEAD
+=======
+res://scripts/Ladder.gd
+res://scenes/interior.tscn
+res://scenes/interior_map.tscn
+res://configs/export_presets.cfg
+res://materials/landscape.tres
+>>>>>>> 9173c181258a662a311012ad153b3f91d40ccfe6

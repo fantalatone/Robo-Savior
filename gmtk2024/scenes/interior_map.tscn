@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cldqlmff0vkjw"]
+
+[node name="Interior Map" type="CSGCombiner3D"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1)
+flip_faces = true
+size = Vector3(10, 3, 7)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 6.5)
+flip_faces = true
+size = Vector3(5, 3, 4)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, -0.25, 6.625)
+flip_faces = true
+size = Vector3(3.75, 6.5, 3.75)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, -2.125, 3.625)
+flip_faces = true
+size = Vector3(1.75, 2.75, 2.5)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, -2, 0)
+flip_faces = true
+size = Vector3(5, 3, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 5.65685, 1.5, -2.82843)
+operation = 2
+flip_faces = true
+size = Vector3(5, 3, 5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -5.34315, 1.5, -3.07843)
+operation = 2
+flip_faces = true
+size = Vector3(5, 3, 5)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.75, 0)
+spot_range = 15.0
+spot_angle = 90.0
