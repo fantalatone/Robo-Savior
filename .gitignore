@@ -6,7 +6,7 @@ gmtk2024/export_presets.cfg
 
 gmtk2024/*.translation
 
-build/
+build/*
 
 gmtk2024/.mono/
 gmtk2024/data_*/
