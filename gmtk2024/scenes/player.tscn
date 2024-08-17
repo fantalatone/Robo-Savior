@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c50dea8otgpq"]
+[gd_scene load_steps=9 format=3 uid="uid://c50dea8otgpq"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_yjgxl"]
+[ext_resource type="Script" path="res://scripts/ItemsController.gd" id="2_db2k6"]
 [ext_resource type="Script" path="res://scripts/tools/Extinguisher.gd" id="2_xyf7v"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wy2g"]
@@ -38,15 +39,21 @@ collide_with_areas = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.25, -0.75)
 
 [node name="Blowtorch" type="MeshInstance3D" parent="Camera/Hand"]
+visible = false
 mesh = SubResource("BoxMesh_erqnd")
 
-[node name="Fire Extinguisher" type="MeshInstance3D" parent="Camera/Hand"]
+[node name="Extinguisher" type="MeshInstance3D" parent="Camera/Hand"]
+visible = false
 mesh = SubResource("BoxMesh_5xo1k")
 
 [node name="Hammer" type="MeshInstance3D" parent="Camera/Hand"]
+visible = false
 mesh = SubResource("BoxMesh_06uh8")
 
 [node name="Items" type="Node3D" parent="."]
+script = ExtResource("2_db2k6")
 
-[node name="Extinguisher" type="Node3D" parent="Items"]
+[node name="Extinguisher" type="Node3D" parent="Items" node_paths=PackedStringArray("mesh")]
 script = ExtResource("2_xyf7v")
+type = 1
+mesh = NodePath("../../Camera/Hand/Extinguisher")

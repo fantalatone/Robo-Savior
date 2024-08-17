@@ -11,10 +11,14 @@ var item_taken : bool = false
 func _ready() -> void:
 	mesh_visual.mesh = item_mesh
 
-func _take_item() -> void:
+func _take_item() -> bool:
+	if item_taken: return false
 	mesh_visual.hide()
 	item_taken = true
+	return true
 
-func _drop_item() -> void:
+func _drop_item() -> bool:
+	if not item_taken: return false
 	mesh_visual.show()
 	item_taken = false
+	return true

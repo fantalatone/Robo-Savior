@@ -12,7 +12,7 @@ config_version=5
 
 config/name="gmtk2024"
 config/tags=PackedStringArray("jam")
-run/main_scene="res://scenes/prototype_level.tscn"
+run/main_scene="res://scenes/interior.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 
 [autoload]

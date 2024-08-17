@@ -16,6 +16,7 @@ var is_being_controlled : bool = true
 var is_holding_item : bool = false
 
 var holding_item_type : Interaction.ITEM_TYPE
+@onready var ITEMS_CONTROLLER : ItemsController = $Items
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -44,8 +45,8 @@ func _input(event: InputEvent) -> void:
 		if event.is_pressed():
 			if not handle_interactions() and is_holding_item:
 				use_item()
-		if event.is_released():
-			pass
+		if event.is_released() and is_holding_item:
+			ITEMS_CONTROLLER.stop_using_item(holding_item_type)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and is_being_controlled:
@@ -62,22 +63,20 @@ func handle_interactions() -> bool:
 
 func interact_with_items( interaction : ItemInteraction ) -> void:
 	if not is_holding_item:
-		is_holding_item = true
-		holding_item_type = interaction.item_type
-		interaction._take_item()
+		if interaction._take_item():
+			holding_item_type = interaction.item_type
+			ITEMS_CONTROLLER.show_tool( holding_item_type )
+			is_holding_item = true
 		return
 	
 	if holding_item_type == interaction.item_type:
-		interaction._drop_item()
-		holding_item_type = Interaction.ITEM_TYPE.NULL
-		is_holding_item = false
+		if interaction._drop_item():
+			ITEMS_CONTROLLER.hide_tools()
+			holding_item_type = Interaction.ITEM_TYPE.NULL
+			is_holding_item = false
 
 func use_item() -> void:
-	match holding_item_type:
-		Interaction.ITEM_TYPE.BLOWTORCH:
-			print("Fire!")
-		Interaction.ITEM_TYPE.DUCT_TAPE:
-			print("I hope it keeps it!")
+	ITEMS_CONTROLLER.start_using_item(holding_item_type)
 
 func update_camera_and_body( relative : Vector2 ) -> void:
 	rotation_degrees.y += relative.x * -1 * MOUSE_SENSIVITY
