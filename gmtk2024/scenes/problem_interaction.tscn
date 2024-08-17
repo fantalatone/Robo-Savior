@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlyv2dtgqq0v8"]
 
-[ext_resource type="Script" path="res://scripts/ItemInteraction.gd" id="1_jdihi"]
+[ext_resource type="Script" path="res://scripts/ProblemInteraction.gd" id="1_mgc1s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyine"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -12,8 +12,9 @@ albedo_color = Color(1, 0, 0, 1)
 material = SubResource("StandardMaterial3D_cj3wm")
 size = Vector3(0.5, 0.1, 0.2)
 
-[node name="Interaction" type="Area3D"]
-script = ExtResource("1_jdihi")
+[node name="Problem Interaction" type="Area3D" groups=["Interactions", "Problems"]]
+script = ExtResource("1_mgc1s")
+type = 1
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_gyine")

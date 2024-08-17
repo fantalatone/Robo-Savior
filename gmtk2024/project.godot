@@ -21,9 +21,9 @@ ScaleManager="*res://ScaleController.gd"
 
 [global_group]
 
-Interactions=""
 Throwables=""
-Fuels=""
+Items=""
+Problems=""
 
 [input]
 

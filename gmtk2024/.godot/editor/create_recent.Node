@@ -1,12 +1,13 @@
+SpotLight3D
+Node3D
 Camera3D
-StaticBody3D
+CSGBox3D
+CSGCombiner3D
 MeshInstance3D
+StaticBody3D
 CollisionShape3D
 Area3D
 Marker3D
-Node3D
-CSGBox3D
-CSGCombiner3D
 RigidBody3D
 VehicleBody3D
 RayCast3D

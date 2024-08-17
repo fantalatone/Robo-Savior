@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cyy2edoh16aya"]
+[gd_scene load_steps=12 format=3 uid="uid://cyy2edoh16aya"]
 
 [ext_resource type="PackedScene" uid="uid://bp04jlmywhkvs" path="res://scenes/robot.tscn" id="1_vjdj5"]
-[ext_resource type="PackedScene" uid="uid://cvu240wuxk3oj" path="res://scenes/cannon.tscn" id="2_e8j0i"]
 [ext_resource type="PackedScene" uid="uid://c6u3rwqla0qjk" path="res://scenes/gui.tscn" id="2_sjlp1"]
-[ext_resource type="PackedScene" uid="uid://bh15tn54okheo" path="res://scenes/mother.tscn" id="4_vky2p"]
+[ext_resource type="PackedScene" uid="uid://db8fsdr8gv0ld" path="res://scenes/prototype_inside.tscn" id="3_2vkjo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2nw3"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -84,13 +83,10 @@ shape = SubResource("BoxShape3D_o4xme")
 [node name="Visual" type="MeshInstance3D" parent="Floor"]
 mesh = SubResource("PlaneMesh_tbscy")
 
-[node name="Cannon" parent="." instance=ExtResource("2_e8j0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.25, 0, 0)
+[node name="Prototype Inside" parent="." instance=ExtResource("3_2vkjo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.25, 0)
 
 [node name="GUI Layer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="GUI Layer" instance=ExtResource("2_sjlp1")]
 mouse_filter = 2
-
-[node name="Mother" parent="." instance=ExtResource("4_vky2p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
