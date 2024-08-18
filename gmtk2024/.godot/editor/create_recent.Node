@@ -1,5 +1,9 @@
-Node
+CSGCombiner3D
+CSGBox3D
 Node3D
+CharacterBody3D
+AnimationTree
+Node
 Item
 MeshInstance3D
 Decal
@@ -8,8 +12,3 @@ StaticBody3D
 GPUParticles3D
 SpotLight3D
 Camera3D
-CSGBox3D
-CSGCombiner3D
-Area3D
-Marker3D
-RigidBody3D

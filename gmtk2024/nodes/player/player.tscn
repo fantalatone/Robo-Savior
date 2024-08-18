@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://c50dea8otgpq"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_yjgxl"]
-[ext_resource type="ArrayMesh" uid="uid://u1hdhrwhu5o8" path="res://Blowtorch_Mesh.res" id="2_3spjo"]
-[ext_resource type="Script" path="res://scripts/ItemsController.gd" id="2_db2k6"]
-[ext_resource type="Script" path="res://scripts/tools/Hammer.gd" id="3_ovgei"]
-[ext_resource type="Script" path="res://scripts/tools/Blowtorch.gd" id="5_tsqy4"]
+[ext_resource type="Script" path="res://nodes/player/Player.gd" id="1_yjgxl"]
+[ext_resource type="ArrayMesh" path="res://Blowtorch_Mesh.res" id="2_3spjo"]
+[ext_resource type="Script" path="res://nodes/items/ItemsController.gd" id="2_db2k6"]
+[ext_resource type="Script" path="res://nodes/items/Hammer.gd" id="3_ovgei"]
+[ext_resource type="Script" path="res://nodes/items/Blowtorch.gd" id="5_tsqy4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wy2g"]
 

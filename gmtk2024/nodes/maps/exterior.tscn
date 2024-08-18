@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://cyy2edoh16aya"]
+
+[ext_resource type="PackedScene" uid="uid://bp04jlmywhkvs" path="res://nodes/player/robot.tscn" id="1_kqw38"]
+[ext_resource type="Material" uid="uid://lu3j6qykuilm" path="res://materials/landscape.tres" id="2_bjv7k"]
+[ext_resource type="PackedScene" uid="uid://c6u3rwqla0qjk" path="res://nodes/gui/gui.tscn" id="3_ah5qu"]
+[ext_resource type="PackedScene" uid="uid://bfdftvpfvu5rw" path="res://nodes/enemies/alien.tscn" id="4_qyaj1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2nw3"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_c2mn0"]
+sky_material = SubResource("ProceduralSkyMaterial_h2nw3")
+
+[sub_resource type="Environment" id="Environment_bh71l"]
+background_mode = 2
+sky = SubResource("Sky_c2mn0")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o4xme"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utq8g"]
+albedo_color = Color(0.572747, 0.265752, 0.207348, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tbscy"]
+material = SubResource("StandardMaterial3D_utq8g")
+size = Vector2(200, 200)
+
+[node name="Exterior" type="Node3D"]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bh71l")
+
+[node name="Robot" parent="." instance=ExtResource("1_kqw38")]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_o4xme")
+
+[node name="Visual" type="MeshInstance3D" parent="Floor"]
+material_override = ExtResource("2_bjv7k")
+mesh = SubResource("PlaneMesh_tbscy")
+
+[node name="GUI Layer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="GUI Layer" instance=ExtResource("3_ah5qu")]
+mouse_filter = 2
+
+[node name="Alien2" parent="." instance=ExtResource("4_qyaj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6311, 11.7676, -14)
+
+[node name="Alien" parent="." instance=ExtResource("4_qyaj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 12, 18)

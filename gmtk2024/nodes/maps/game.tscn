@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://boao6whqtfiw7"]
+
+[ext_resource type="Script" path="res://nodes/maps/game.gd" id="1_j1b16"]
+[ext_resource type="PackedScene" uid="uid://c6lar545dkqe1" path="res://nodes/maps/interior.tscn" id="2_eeofs"]
+[ext_resource type="PackedScene" uid="uid://cyy2edoh16aya" path="res://nodes/maps/exterior.tscn" id="3_413uk"]
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_j1b16")
+
+[node name="Interior" parent="." instance=ExtResource("2_eeofs")]
+visible = false
+
+[node name="Exterior" parent="." instance=ExtResource("3_413uk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+visible = false

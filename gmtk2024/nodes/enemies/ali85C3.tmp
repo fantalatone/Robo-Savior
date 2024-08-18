@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfdftvpfvu5rw"]
+
+[ext_resource type="Script" path="res://nodes/enemies/alien.gd" id="1_ag21l"]
+[ext_resource type="PackedScene" uid="uid://csixggwk43knb" path="res://assets/blender/Slime.blend" id="2_xycki"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_okow6"]
+
+[node name="Alien" type="CharacterBody3D"]
+script = ExtResource("1_ag21l")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_okow6")
+
+[node name="Slime" parent="." instance=ExtResource("2_xycki")]
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0, 0, -0.0799999)
+
+[node name="Skeleton3D" parent="Slime/Armature" index="0"]
+bones/0/position = Vector3(-1.22254, -1.64759, 2.0456)
+bones/0/rotation = Quaternion(-0.707105, -0.00140916, -0.00140916, 0.707105)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(0.680658, 0.154148, -0.148056, 0.70073)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.0218184, -0.0353019, -0.886379, 0.461096)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.0279248, -0.00920723, -0.210768, 0.977094)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.000805706, 4.82432e-06, 0.00199286, 0.999998)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.681255, -0.151444, 0.150856, 0.700142)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.00202732, 0.0455873, 0.886632, 0.460218)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0323668, -0.013827, 0.210185, 0.977028)
+bones/8/rotation = Quaternion(0.999657, 0.00199218, 5.20475e-05, 0.026106)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.319384, 3.36578e-08, -5.62893e-08, 0.947625)
+bones/10/rotation = Quaternion(-0.434179, -1.53654e-08, -1.02168e-07, 0.900827)
+bones/11/rotation = Quaternion(-0.38777, -1.27069e-08, -9.93023e-08, 0.921756)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-0.527051, -5.28857e-09, -1.3402e-07, 0.849834)
+bones/13/position = Vector3(5.10727, -4.185, 0.491518)
+bones/13/rotation = Quaternion(0.0142369, 0.706963, 0.706963, 0.0142369)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(-0.013355, 0.706981, 0.706981, -0.013355)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(-1.22254, 2.93506, 2.37577)
+
+[editable path="Slime"]

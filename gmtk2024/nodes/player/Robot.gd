@@ -17,7 +17,7 @@ var current_gun_mode : GUN_MODE = GUN_MODE.PLASMA
 
 @onready var BULLET_POINT : Marker3D = $"Camera/Gun/Bullet Point"
 @onready var RAY : RayCast3D = $"Camera/Gun/Ray"
-@onready var PLASMA_BULLET := preload("res://scenes/plasma_bullet.tscn")
+@onready var PLASMA_BULLET := preload("res://nodes/items/bullet.tscn")
 
 @onready var PICKUP_RAY : RayCast3D = $"Camera/Pickup Ray"
 @onready var PICKUP_POINT : Marker3D = $"Pickup Point"
@@ -57,6 +57,8 @@ func _physics_process(delta: float) -> void:
 
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	if not get_tree().current_scene.get_node("Exterior").visible: return
 	
 	if direction:
 		if is_being_controlled:

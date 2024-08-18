@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://w8v2j6vd2cdc"]
 
-[ext_resource type="Script" path="res://scripts/FragileObject.gd" id="1_ky3xv"]
+[ext_resource type="Script" path="res://nodes/items/FragileObject.gd" id="1_ky3xv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0tfw"]
 size = Vector3(2, 2, 2)

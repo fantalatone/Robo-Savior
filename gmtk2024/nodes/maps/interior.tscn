@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6lar545dkqe1"]
+
+[ext_resource type="Script" path="res://nodes/items/FragilesController.gd" id="2_dlw3l"]
+[ext_resource type="PackedScene" uid="uid://c50dea8otgpq" path="res://nodes/player/player.tscn" id="4_mm34r"]
+[ext_resource type="PackedScene" uid="uid://d2k5o7e0bm87j" path="res://nodes/items/item_interaction.tscn" id="5_0ov5v"]
+[ext_resource type="PackedScene" uid="uid://w8v2j6vd2cdc" path="res://nodes/items/fragile_object.tscn" id="6_3ci5w"]
+
+[sub_resource type="GDScript" id="GDScript_xa4pl"]
+script/source = "extends Node3D
+class_name InteriorController
+
+@export var fragile_object : FragileObject
+
+func _ready() -> void:
+	fragile_object.health = 5
+	fragile_object._update_visuals()
+"
+
+[sub_resource type="PrismMesh" id="PrismMesh_hdesx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8mdab"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_87rvf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6jiv2"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_d3pet"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o0muk"]
+
+[node name="Interior" type="Node3D" node_paths=PackedStringArray("fragile_object")]
+script = SubResource("GDScript_xa4pl")
+fragile_object = NodePath("Fragile Object")
+
+[node name="Fragiles Controller" type="Node" parent="." node_paths=PackedStringArray("DESTRUCTIBLES")]
+script = ExtResource("2_dlw3l")
+DESTRUCTIBLES = [NodePath("../Fragile Object")]
+
+[node name="Player" parent="." instance=ExtResource("4_mm34r")]
+
+[node name="Item Interaction" parent="." instance=ExtResource("5_0ov5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 3.75)
+item_type = 2
+item_mesh = SubResource("PrismMesh_hdesx")
+
+[node name="Item Interaction2" parent="." instance=ExtResource("5_0ov5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 3.75)
+item_type = 2
+item_mesh = SubResource("BoxMesh_8mdab")
+
+[node name="Item Interaction3" parent="." instance=ExtResource("5_0ov5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 3.25)
+item_type = 3
+item_mesh = SubResource("CapsuleMesh_87rvf")
+
+[node name="Fragile Object" parent="." instance=ExtResource("6_3ci5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.375, 0.025, 7.875)
+item_type = 3
+high_damage_mesh = SubResource("BoxMesh_6jiv2")
+medium_damage_mesh = SubResource("PrismMesh_d3pet")
+low_damage_mesh = SubResource("CylinderMesh_o0muk")
+
+[node name="walls" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1)
+flip_faces = true
+size = Vector3(10, 3, 7)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 6.5)
+flip_faces = true
+size = Vector3(5, 3, 4)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, -0.25, 6.625)
+flip_faces = true
+size = Vector3(3.75, 6.5, 3.75)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, -2.125, 3.625)
+flip_faces = true
+size = Vector3(1.75, 2.75, 2.5)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, -2, 0)
+flip_faces = true
+size = Vector3(5, 3, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="walls"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 5.65685, 1.5, -2.82843)
+operation = 2
+flip_faces = true
+size = Vector3(5, 3, 5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="walls"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -5.34315, 1.5, -3.07843)
+operation = 2
+flip_faces = true
+size = Vector3(5, 3, 5)
+
+[node name="Lights" type="Node3D" parent="walls"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="walls/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.75, 0)
+spot_range = 15.0
+spot_angle = 90.0
