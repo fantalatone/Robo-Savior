@@ -12,7 +12,7 @@ func _ready() -> void:
 	human = get_tree().current_scene.find_child("Player")
 	robot = get_tree().current_scene.find_child("Robot")
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("prototype_tab"):
 		_change_scale()
 

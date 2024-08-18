@@ -1,9 +1,9 @@
+MeshInstance3D
 Decal
 CollisionShape3D
 StaticBody3D
 GPUParticles3D
 Node3D
-MeshInstance3D
 SpotLight3D
 Camera3D
 CSGBox3D
@@ -12,4 +12,3 @@ Area3D
 Marker3D
 RigidBody3D
 VehicleBody3D
-RayCast3D

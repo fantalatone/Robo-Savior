@@ -16,3 +16,29 @@ class_name FragileObject
 
 const MAX_HEALTH : int = 100
 var health : float = 100
+
+@onready var DECAL : Decal = $Decal
+@onready var MESH : MeshInstance3D = $Mesh
+
+func _ready() -> void:
+	if not is_decal:
+		DECAL.hide()
+		DECAL.process_mode = Node.PROCESS_MODE_DISABLED
+		MESH.mesh = low_damage_mesh
+		return
+
+func _update_visuals():
+	if is_decal:
+		if health > 0 and health <= 30:
+			DECAL.texture_albedo = high_damage_decal
+		if health > 30 and health <= 70:
+			DECAL.texture_albedo = medium_damage_decal
+		if health > 70:
+			DECAL.texture_albedo = low_damage_decal
+		return
+	if health > 0 and health <= 30:
+		MESH.mesh = high_damage_mesh
+	if health > 30 and health <= 70:
+		MESH.mesh = medium_damage_mesh
+	if health > 70:
+		MESH.mesh = low_damage_mesh

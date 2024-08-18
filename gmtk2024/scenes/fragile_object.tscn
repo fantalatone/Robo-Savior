@@ -3,9 +3,16 @@
 [ext_resource type="Script" path="res://scripts/FragileObject.gd" id="1_ky3xv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0tfw"]
+size = Vector3(2, 2, 2)
 
 [node name="Fragile Object" type="StaticBody3D"]
 script = ExtResource("1_ky3xv")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_v0tfw")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
