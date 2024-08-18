@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0tfw"]
 size = Vector3(2, 2, 2)
 
-[node name="Fragile Object" type="StaticBody3D"]
+[node name="Fragile Object" type="StaticBody3D" groups=["Fragiles"]]
 script = ExtResource("1_ky3xv")
 
 [node name="Collision" type="CollisionShape3D" parent="."]

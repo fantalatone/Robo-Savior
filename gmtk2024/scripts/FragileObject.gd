@@ -27,6 +27,12 @@ func _ready() -> void:
 		MESH.mesh = low_damage_mesh
 		return
 
+func _heal(amount : float):
+	health += amount
+	_update_visuals()
+	if health >= MAX_HEALTH:
+		health = MAX_HEALTH
+
 func _update_visuals():
 	if is_decal:
 		if health > 0 and health <= 30:

@@ -7,7 +7,9 @@ class_name Item
 
 var is_being_used : bool = false
 
-func use():
+@onready var INTERACTION : RayCast3D = %Interaction
+
+func start_use():
 	is_being_used = true
 
 func stop_use():

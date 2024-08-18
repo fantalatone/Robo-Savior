@@ -21,9 +21,9 @@ ScaleManager="*res://scripts/ScaleController.gd"
 
 [global_group]
 
-Throwables=""
 Items=""
-Problems=""
+Throwables=""
+Fragiles=""
 
 [input]
 

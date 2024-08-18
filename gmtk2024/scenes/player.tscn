@@ -1,15 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://c50dea8otgpq"]
+[gd_scene load_steps=10 format=3 uid="uid://c50dea8otgpq"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_yjgxl"]
+[ext_resource type="ArrayMesh" uid="uid://u1hdhrwhu5o8" path="res://Blowtorch_Mesh.res" id="2_3spjo"]
 [ext_resource type="Script" path="res://scripts/ItemsController.gd" id="2_db2k6"]
-[ext_resource type="Script" path="res://scripts/tools/Extinguisher.gd" id="2_xyf7v"]
+[ext_resource type="Script" path="res://scripts/tools/Hammer.gd" id="3_ovgei"]
+[ext_resource type="Script" path="res://scripts/tools/Blowtorch.gd" id="5_tsqy4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wy2g"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xdmc8"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_erqnd"]
-size = Vector3(0.1, 1, 0.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5xo1k"]
 size = Vector3(0.25, 0.8, 0.25)
@@ -32,6 +31,7 @@ mesh = SubResource("CapsuleMesh_xdmc8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 
 [node name="Interaction" type="RayCast3D" parent="Camera"]
+unique_name_in_owner = true
 target_position = Vector3(0, 0, -4)
 collide_with_areas = true
 
@@ -39,8 +39,9 @@ collide_with_areas = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.25, -0.75)
 
 [node name="Blowtorch" type="MeshInstance3D" parent="Camera/Hand"]
+transform = Transform3D(-0.0258819, 0, 0.0965926, 0, 0.1, 0, -0.0965926, 0, -0.0258819, 0.01, -0.2, -0.026)
 visible = false
-mesh = SubResource("BoxMesh_erqnd")
+mesh = ExtResource("2_3spjo")
 
 [node name="Extinguisher" type="MeshInstance3D" parent="Camera/Hand"]
 visible = false
@@ -53,7 +54,12 @@ mesh = SubResource("BoxMesh_06uh8")
 [node name="Items" type="Node3D" parent="."]
 script = ExtResource("2_db2k6")
 
-[node name="Extinguisher" type="Node3D" parent="Items" node_paths=PackedStringArray("mesh")]
-script = ExtResource("2_xyf7v")
-type = 1
-mesh = NodePath("../../Camera/Hand/Extinguisher")
+[node name="Hammer" type="Node3D" parent="Items" node_paths=PackedStringArray("mesh")]
+script = ExtResource("3_ovgei")
+type = 2
+mesh = NodePath("../../Camera/Hand/Hammer")
+
+[node name="Blowtorch" type="Node3D" parent="Items" node_paths=PackedStringArray("mesh")]
+script = ExtResource("5_tsqy4")
+type = 3
+mesh = NodePath("../../Camera/Hand/Blowtorch")

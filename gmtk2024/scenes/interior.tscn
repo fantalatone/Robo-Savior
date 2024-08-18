@@ -28,22 +28,22 @@ fragile_object = NodePath("Fragile Object")
 
 [node name="Item Interaction" parent="." instance=ExtResource("3_c44iu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 3.75)
-item_type = 1
+item_type = 2
 item_mesh = SubResource("PrismMesh_hdesx")
 
 [node name="Item Interaction2" parent="." instance=ExtResource("3_c44iu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 3.75)
-item_type = 1
+item_type = 2
 item_mesh = SubResource("BoxMesh_8mdab")
 
 [node name="Item Interaction3" parent="." instance=ExtResource("3_c44iu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 3.25)
-item_type = 2
+item_type = 3
 item_mesh = SubResource("CapsuleMesh_87rvf")
 
 [node name="Fragile Object" parent="." instance=ExtResource("4_4laqd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.375, 0.025, 7.875)
-item_type = 2
+item_type = 3
 high_damage_mesh = SubResource("BoxMesh_6jiv2")
 medium_damage_mesh = SubResource("PrismMesh_d3pet")
 low_damage_mesh = SubResource("CylinderMesh_o0muk")

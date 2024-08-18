@@ -16,7 +16,7 @@ func hide_tools():
 		c.mesh.hide()
 
 func start_using_item( type: Interaction.ITEM_TYPE ):
-	ITEMS[type].use()
+	ITEMS[type].start_use()
 
 func stop_using_item( type: Interaction.ITEM_TYPE ):
 	ITEMS[type].stop_use()
