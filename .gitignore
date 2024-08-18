@@ -1,6 +1,4 @@
-gmtk2024/.godot/editor/
-gmtk2024/.godot/shader_cache/
-gmtk2024/.godot/.gdignore
-gmtk2024/.godot/global_script_class_cache.cfg
-gmtk2024/.godot/scene_groups_cache.cfg
-gmtk2024/.godot/uid_cache.bin
+gmtk2024/.godot/ 
+*.import         
+build/*         
+!build/          
