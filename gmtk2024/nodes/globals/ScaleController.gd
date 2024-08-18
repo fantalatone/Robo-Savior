@@ -8,7 +8,7 @@ var robot : Robot
 
 var current_scale : SCALE = SCALE.HUMAN
 
-func _ready() -> void:
+func init_system() -> void:
 	human = get_tree().current_scene.find_child("Player")
 	robot = get_tree().current_scene.find_child("Robot")
 

@@ -12,12 +12,18 @@ config_version=5
 
 config/name="gmtk2024"
 config/tags=PackedStringArray("jam")
-run/main_scene="res://nodes/maps/game.tscn"
+run/main_scene="res://nodes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 
 [autoload]
 
 ScaleManager="*res://nodes/globals/ScaleController.gd"
+ScoreController="*res://nodes/systems/ScoreController.gd"
+
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=640
 
 [global_group]
 
