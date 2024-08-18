@@ -1,20 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6lar545dkqe1"]
+[gd_scene load_steps=11 format=3 uid="uid://c6lar545dkqe1"]
 
 [ext_resource type="Script" path="res://nodes/items/FragilesController.gd" id="2_dlw3l"]
 [ext_resource type="PackedScene" uid="uid://c50dea8otgpq" path="res://nodes/player/player.tscn" id="4_mm34r"]
 [ext_resource type="PackedScene" uid="uid://d2k5o7e0bm87j" path="res://nodes/items/item_interaction.tscn" id="5_0ov5v"]
 [ext_resource type="PackedScene" uid="uid://w8v2j6vd2cdc" path="res://nodes/items/fragile_object.tscn" id="6_3ci5w"]
-
-[sub_resource type="GDScript" id="GDScript_xa4pl"]
-script/source = "extends Node3D
-class_name InteriorController
-
-@export var fragile_object : FragileObject
-
-func _ready() -> void:
-	fragile_object.health = 5
-	fragile_object._update_visuals()
-"
 
 [sub_resource type="PrismMesh" id="PrismMesh_hdesx"]
 
@@ -28,9 +17,7 @@ func _ready() -> void:
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_o0muk"]
 
-[node name="Interior" type="Node3D" node_paths=PackedStringArray("fragile_object")]
-script = SubResource("GDScript_xa4pl")
-fragile_object = NodePath("Fragile Object")
+[node name="Interior" type="Node3D"]
 
 [node name="Fragiles Controller" type="Node" parent="." node_paths=PackedStringArray("DESTRUCTIBLES")]
 script = ExtResource("2_dlw3l")

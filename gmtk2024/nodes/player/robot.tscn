@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" path="res://nodes/player/Robot.gd" id="1_hhfwq"]
 [ext_resource type="PackedScene" uid="uid://tjb8561r0crf" path="res://assets/blender/Robot.blend" id="2_2uj77"]
+[ext_resource type="Script" path="res://nodes/player/HealthSystem.gd" id="2_dv8wx"]
+[ext_resource type="Script" path="res://nodes/player/weapon/WeaponsController.gd" id="3_2vmnv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m748r"]
+height = 3.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ta5h3"]
 albedo_color = Color(0, 0, 0, 1)
@@ -11,119 +14,17 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_djnlk"]
 material = SubResource("StandardMaterial3D_ta5h3")
 
-[sub_resource type="BoxMesh" id="BoxMesh_hsprt"]
-size = Vector3(0.2, 2, 0.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ombtf"]
-size = Vector3(0.2, 2, 0.2)
-
 [sub_resource type="Animation" id="Animation_2clr2"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera/Sword Origin:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera/Sword Origin/Sword:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, -0.25, -1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera/Sword Origin/Sword:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_2h0hw"]
 resource_name = "idle"
 length = 0.5
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera/Sword Origin:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera/Sword Origin/Sword:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_pxnp8"]
 resource_name = "slash"
 length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera/Sword Origin:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -0.261799, 0), Vector3(0, 1.8326, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera/Sword Origin/Sword:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, -0.25, -1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera/Sword Origin/Sword:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -2.26893, 1.5708)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ffkyl"]
 _data = {
@@ -135,8 +36,11 @@ _data = {
 [node name="Robot" type="CharacterBody3D"]
 script = ExtResource("1_hhfwq")
 
+[node name="Health System" type="Node" parent="."]
+script = ExtResource("2_dv8wx")
+
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CapsuleShape3D_m748r")
 
 [node name="Mesh" parent="." instance=ExtResource("2_2uj77")]
@@ -144,42 +48,40 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.
 visible = false
 
 [node name="Camera" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
 
-[node name="Gun" type="MeshInstance3D" parent="Camera"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, -0.75, 0, -1)
+[node name="Plasma Gun" type="MeshInstance3D" parent="Camera"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.5, -0.5, -1)
 mesh = SubResource("BoxMesh_djnlk")
 skeleton = NodePath("../..")
 
-[node name="Bullet Point" type="Marker3D" parent="Camera/Gun"]
+[node name="Bullet Point" type="Marker3D" parent="Camera/Plasma Gun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 
-[node name="Ray" type="RayCast3D" parent="Camera/Gun"]
+[node name="Weapon Ray" type="RayCast3D" parent="Camera/Plasma Gun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 target_position = Vector3(0, 0, -999)
 
-[node name="Sword Origin" type="Node3D" parent="Camera"]
-
-[node name="Sword" type="MeshInstance3D" parent="Camera/Sword Origin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.25, -1)
-mesh = SubResource("BoxMesh_hsprt")
-
-[node name="Sword Area" type="Area3D" parent="Camera/Sword Origin/Sword"]
-
-[node name="Collision" type="CollisionShape3D" parent="Camera/Sword Origin/Sword/Sword Area"]
-shape = SubResource("BoxShape3D_ombtf")
-
-[node name="Pickup Ray" type="RayCast3D" parent="Camera"]
+[node name="Ray" type="RayCast3D" parent="Camera"]
+unique_name_in_owner = true
+visible = false
 target_position = Vector3(0, 0, -4)
 debug_shape_thickness = 5
+
+[node name="Pickup Point" type="Marker3D" parent="Camera"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, -0.25, -1.5)
+
+[node name="Weapons" type="Node3D" parent="." node_paths=PackedStringArray("PLASMA_GUN_BARREL_POINT")]
+script = ExtResource("3_2vmnv")
+MAX_PLASMA_GUN_AMMO = 50
+PLASMA_GUN_FIRE_RATE = 0.25
+PLASMA_GUN_BARREL_POINT = NodePath("../Camera/Plasma Gun/Bullet Point")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ffkyl")
 }
 
-[node name="Pickup Point" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-
-[connection signal="body_entered" from="Camera/Sword Origin/Sword/Sword Area" to="." method="_on_sword_entered_body"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_anim_finished"]

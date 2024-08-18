@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://c50dea8otgpq"]
 
 [ext_resource type="Script" path="res://nodes/player/Player.gd" id="1_yjgxl"]
-[ext_resource type="ArrayMesh" path="res://Blowtorch_Mesh.res" id="2_3spjo"]
+[ext_resource type="ArrayMesh" uid="uid://c7uywmknsqtlx" path="res://Blowtorch_Mesh.res" id="2_3spjo"]
 [ext_resource type="Script" path="res://nodes/items/ItemsController.gd" id="2_db2k6"]
-[ext_resource type="Script" path="res://nodes/items/Hammer.gd" id="3_ovgei"]
-[ext_resource type="Script" path="res://nodes/items/Blowtorch.gd" id="5_tsqy4"]
+[ext_resource type="Script" path="res://nodes/items/tools/Hammer.gd" id="3_ovgei"]
+[ext_resource type="Script" path="res://nodes/items/tools/Blowtorch.gd" id="5_tsqy4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wy2g"]
 
@@ -29,10 +29,11 @@ mesh = SubResource("CapsuleMesh_xdmc8")
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+current = true
 
 [node name="Interaction" type="RayCast3D" parent="Camera"]
 unique_name_in_owner = true
-target_position = Vector3(0, 0, -4)
+target_position = Vector3(0, 0, -3)
 collide_with_areas = true
 
 [node name="Hand" type="Marker3D" parent="Camera"]

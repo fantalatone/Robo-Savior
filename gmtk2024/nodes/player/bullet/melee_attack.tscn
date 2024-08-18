@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8c5nc7jk5llt"]
+
+[ext_resource type="Script" path="res://nodes/player/bullet/MeleeAttack.gd" id="1_7y6lh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lx4yx"]
+radius = 0.4
+
+[node name="Melee Attack" type="Area3D"]
+script = ExtResource("1_7y6lh")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_lx4yx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

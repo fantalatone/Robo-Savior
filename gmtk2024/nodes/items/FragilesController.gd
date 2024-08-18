@@ -4,8 +4,8 @@ class_name FragilesController
 @export var DESTRUCTIBLES : Array[ FragileObject ]
 @export var MANAGED : Array[ FragileObject ]
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("change_gun"):
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("fly"):
 		_got_hit()
 
 func _got_hit():

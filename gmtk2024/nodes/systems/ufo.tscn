@@ -1,7 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://phx308didjl5"]
 
-[ext_resource type="Script" path="res://nodes/enemies/UFO.gd" id="1_8fvo3"]
-
+[ext_resource type="Script" path="res://nodes/systems/UFO.gd" id="1_8fvo3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gyukg"]
 
