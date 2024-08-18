@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfdftvpfvu5rw"]
+[gd_scene load_steps=10 format=3 uid="uid://bfdftvpfvu5rw"]
 
 [ext_resource type="Script" path="res://nodes/enemies/Spider.gd" id="1_t7r8u"]
 [ext_resource type="PackedScene" uid="uid://cnmeyn1vdhhby" path="res://assets/blender/Spider.fbx" id="2_7c528"]
+[ext_resource type="Texture2D" uid="uid://dvo76hq7jyop0" path="res://assets/textures/Spider.jpg" id="3_7gu0c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8odqn"]
 size = Vector3(1.75, 1.75, 3.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8uc8q"]
+albedo_texture = ExtResource("3_7gu0c")
 
 [sub_resource type="Animation" id="Animation_mp2we"]
 resource_name = "ATTACK"
@@ -428,7 +432,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, -0.125)
 shape = SubResource("BoxShape3D_8odqn")
 
 [node name="Agent" type="NavigationAgent3D" parent="."]
-debug_enabled = true
 
 [node name="Attack Point" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -2.45)
@@ -479,6 +482,9 @@ bones/12/scale = Vector3(1, 1, 1)
 bones/13/position = Vector3(0.0510727, -0.00491518, -0.04185)
 bones/14/position = Vector3(-0.0755234, -0.00491518, -0.04185)
 bones/15/position = Vector3(-0.0122135, -0.0236824, 0.0268683)
+
+[node name="Cube_003" parent="Spider/Armature/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_8uc8q")
 
 [node name="AnimationPlayer" parent="Spider" index="1"]
 libraries = {

@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://boao6whqtfiw7"]
+[gd_scene load_steps=5 format=3 uid="uid://boao6whqtfiw7"]
 
-[ext_resource type="Script" path="res://nodes/globals/GameloopController.gd" id="1_ul47s"]
 [ext_resource type="PackedScene" uid="uid://c6lar545dkqe1" path="res://nodes/maps/interior.tscn" id="2_eeofs"]
 [ext_resource type="PackedScene" uid="uid://c6u3rwqla0qjk" path="res://nodes/gui/gui.tscn" id="3_02h0n"]
 [ext_resource type="PackedScene" uid="uid://cyy2edoh16aya" path="res://nodes/maps/exterior.tscn" id="3_413uk"]
@@ -8,18 +7,23 @@
 
 [node name="Game" type="Node3D"]
 
-[node name="GameloopController" type="Node" parent="."]
-script = ExtResource("1_ul47s")
+[node name="Exterior" parent="." instance=ExtResource("3_413uk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
 
 [node name="Interior" parent="." instance=ExtResource("2_eeofs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 
-[node name="Exterior" parent="." instance=ExtResource("3_413uk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
-
 [node name="UFO" parent="." instance=ExtResource("4_m4feq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 17)
 SPAWN_COOLDOWN = 5.0
+
+[node name="UFO2" parent="." instance=ExtResource("4_m4feq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 17)
+SPAWN_COOLDOWN = 6.0
+
+[node name="UFO3" parent="." instance=ExtResource("4_m4feq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 17)
+SPAWN_COOLDOWN = 7.0
 
 [node name="GUI Layer" type="CanvasLayer" parent="."]
 

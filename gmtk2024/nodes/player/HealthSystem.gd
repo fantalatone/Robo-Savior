@@ -5,11 +5,14 @@ class_name HealthSystem
 
 var current_health : int
 
+signal damage_taken
+
 func _ready() -> void:
 	current_health = MAX_HEALTH
 
 func _damage( amount: int ) -> void:
 	current_health -= amount
 	print("Took some damages!")
+	damage_taken.emit()
 	if current_health <= 0:
-		print("Ded!")
+		print("Dead! :P")
