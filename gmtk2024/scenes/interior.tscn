@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6lar545dkqe1"]
+[gd_scene load_steps=13 format=3 uid="uid://c6lar545dkqe1"]
 
 [ext_resource type="PackedScene" uid="uid://cldqlmff0vkjw" path="res://scenes/interior_map.tscn" id="1_dlk24"]
 [ext_resource type="Script" path="res://InteriorController.gd" id="1_salyg"]
 [ext_resource type="PackedScene" uid="uid://c50dea8otgpq" path="res://scenes/player.tscn" id="2_gwn72"]
 [ext_resource type="PackedScene" uid="uid://d2k5o7e0bm87j" path="res://scenes/item_interaction.tscn" id="3_c44iu"]
 [ext_resource type="PackedScene" uid="uid://w8v2j6vd2cdc" path="res://scenes/fragile_object.tscn" id="4_4laqd"]
+[ext_resource type="Script" path="res://FragilesController.gd" id="6_m1ya8"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_hdesx"]
 
@@ -21,6 +22,10 @@
 [node name="Interior" type="Node3D" node_paths=PackedStringArray("fragile_object")]
 script = ExtResource("1_salyg")
 fragile_object = NodePath("Fragile Object")
+
+[node name="Fragiles Controller" type="Node" parent="." node_paths=PackedStringArray("DESTRUCTIBLES")]
+script = ExtResource("6_m1ya8")
+DESTRUCTIBLES = [NodePath("../Fragile Object")]
 
 [node name="Interior Map" parent="." instance=ExtResource("1_dlk24")]
 
