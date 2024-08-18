@@ -85,3 +85,5 @@ quit={
 [rendering]
 
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.404511, 0.404511, 0.404511, 1)
+environment/defaults/default_environment="res://materials/enviroment.tres"

@@ -1,4 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://dwj5dx6x1r82h"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dwj5dx6x1r82h"]
+
+[ext_resource type="Texture2D" uid="uid://bd1dsigkvg08w" path="res://assets/textures/Decal/Metal.png" id="1_ieo1h"]
 
 [resource]
-albedo_color = Color(0.44, 0.33132, 0.2684, 1)
+albedo_texture = ExtResource("1_ieo1h")

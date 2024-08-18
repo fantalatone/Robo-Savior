@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://boao6whqtfiw7"]
+[gd_scene load_steps=7 format=3 uid="uid://boao6whqtfiw7"]
 
 [ext_resource type="Script" path="res://nodes/maps/game.gd" id="1_ems3d"]
 [ext_resource type="PackedScene" uid="uid://c6lar545dkqe1" path="res://nodes/maps/interior.tscn" id="2_eeofs"]
+[ext_resource type="Environment" uid="uid://xd8303ig1vf0" path="res://materials/enviroment.tres" id="2_o8x3i"]
 [ext_resource type="PackedScene" uid="uid://c6u3rwqla0qjk" path="res://nodes/gui/gui.tscn" id="3_02h0n"]
 [ext_resource type="PackedScene" uid="uid://cyy2edoh16aya" path="res://nodes/maps/exterior.tscn" id="3_413uk"]
 [ext_resource type="PackedScene" uid="uid://phx308didjl5" path="res://nodes/systems/ufo.tscn" id="4_m4feq"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_ems3d")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_o8x3i")
 
 [node name="Exterior" parent="." instance=ExtResource("3_413uk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
