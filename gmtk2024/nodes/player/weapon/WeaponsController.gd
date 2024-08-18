@@ -2,6 +2,7 @@ extends Node3D
 class_name WeaponsController
 
 @onready var RAY : RayCast3D = %Ray
+@onready var WEAPON_RAY : RayCast3D = %"Weapon Ray"
 @onready var PICKUP_POINT : Marker3D = %"Pickup Point"
 @onready var CAM : Camera3D = %Camera
 
@@ -69,6 +70,7 @@ func _process(_delta: float) -> void:
 	current_plasma_ammo -= 1
 	plasma_gun_timer.start(PLASMA_GUN_FIRE_RATE)
 	spawn_plasma_bullet()
+	shoot()
 
 func pickup_throwable( throwable : RigidBody3D ) -> void:
 	print("Pick it up!")
@@ -90,6 +92,13 @@ func reload_ammo() -> void:
 	print("Reload Done!")
 	is_reloading = false
 	current_plasma_ammo = MAX_PLASMA_GUN_AMMO
+
+func shoot() -> void:
+	if WEAPON_RAY.is_colliding():
+		if WEAPON_RAY.get_collider() is Enemy:
+			WEAPON_RAY.get_collider()._damage(20)
+	
+	spawn_plasma_bullet()
 
 func spawn_plasma_bullet() -> void:
 	var p = PLASMA_BULLET.instantiate()

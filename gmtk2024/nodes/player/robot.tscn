@@ -59,14 +59,16 @@ skeleton = NodePath("../..")
 [node name="Bullet Point" type="Marker3D" parent="Camera/Plasma Gun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 
-[node name="Weapon Ray" type="RayCast3D" parent="Camera/Plasma Gun"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
-target_position = Vector3(0, 0, -999)
-
 [node name="Ray" type="RayCast3D" parent="Camera"]
 unique_name_in_owner = true
 visible = false
 target_position = Vector3(0, 0, -4)
+debug_shape_thickness = 5
+
+[node name="Weapon Ray" type="RayCast3D" parent="Camera"]
+unique_name_in_owner = true
+visible = false
+target_position = Vector3(0, 0, -999)
 debug_shape_thickness = 5
 
 [node name="Pickup Point" type="Marker3D" parent="Camera"]

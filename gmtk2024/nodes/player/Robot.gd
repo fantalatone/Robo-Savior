@@ -10,6 +10,7 @@ const MOUSE_SENSIVITY : float = 0.5
 @onready var ANIMATION : AnimationPlayer = $Animation
 
 @onready var WEAPONS : WeaponsController = $Weapons
+@onready var HEALTH : HealthSystem = $"Health System"
 
 var camera_pitch : float = 0.0
 
@@ -42,6 +43,8 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
+
+func _damage(amount): HEALTH._damage( amount )
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and is_being_controlled:
