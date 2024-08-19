@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bp04jlmywhkvs"]
 
 [ext_resource type="Script" path="res://nodes/player/Robot.gd" id="1_hhfwq"]
-[ext_resource type="PackedScene" uid="uid://tjb8561r0crf" path="res://assets/blender/Robot.blend" id="2_2uj77"]
+[ext_resource type="PackedScene" uid="uid://b1l2ix8jq7em3" path="res://assets/blender/Robot.blend" id="2_2uj77"]
 [ext_resource type="Script" path="res://nodes/player/HealthSystem.gd" id="2_dv8wx"]
 [ext_resource type="Script" path="res://nodes/player/weapon/WeaponsController.gd" id="3_2vmnv"]
 
@@ -50,6 +50,7 @@ visible = false
 [node name="Camera" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+fov = 95.0
 
 [node name="Plasma Gun" type="MeshInstance3D" parent="Camera"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.5, -0.5, -1)

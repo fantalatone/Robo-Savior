@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c778wbkolyxel"]
+
+[resource]
+albedo_color = Color(0.09, 0.08118, 0.0774, 1)
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.413215, 0.204094, 0.111077, 1)
+emission_energy_multiplier = 19.35
+grow_amount = -0.97

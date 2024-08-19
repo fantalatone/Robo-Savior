@@ -25,6 +25,7 @@ mesh = SubResource("CapsuleMesh_xdmc8")
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 current = true
+fov = 95.0
 
 [node name="Interaction" type="RayCast3D" parent="Camera"]
 unique_name_in_owner = true
@@ -33,6 +34,7 @@ collide_with_areas = true
 
 [node name="Hand" type="Marker3D" parent="Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.25, -0.75)
+visible = false
 
 [node name="Blowtorch" type="MeshInstance3D" parent="Camera/Hand"]
 transform = Transform3D(-0.0258819, 0, 0.0965926, 0, 0.1, 0, -0.0965926, 0, -0.0258819, 0.01, -0.2, -0.026)
