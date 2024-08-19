@@ -10,5 +10,4 @@ func _ready() -> void:
 func _got_hit():
 	if randf() < 0.375:
 		var f : FragileObject = DESTRUCTIBLES.pick_random()
-		f.health = 50
-		f._update_visuals()
+		f._broke_one_level()

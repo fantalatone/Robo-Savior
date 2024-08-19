@@ -1,13 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://c6lar545dkqe1"]
+[gd_scene load_steps=16 format=3 uid="uid://c6lar545dkqe1"]
 
 [ext_resource type="Script" path="res://nodes/items/FragilesController.gd" id="2_dlw3l"]
 [ext_resource type="PackedScene" uid="uid://c50dea8otgpq" path="res://nodes/player/player.tscn" id="4_mm34r"]
 [ext_resource type="PackedScene" uid="uid://d2k5o7e0bm87j" path="res://nodes/items/item_interaction.tscn" id="5_0ov5v"]
-[ext_resource type="Texture2D" uid="uid://co2wb4ihqifca" path="res://assets/textures/Decal/Crack.png" id="5_lkawo"]
-[ext_resource type="Material" uid="uid://dwj5dx6x1r82h" path="res://materials/interior.tres" id="5_v7qj3"]
+[ext_resource type="Texture2D" uid="uid://234rog65la2g" path="res://assets/textures/Decal/Crack.png" id="5_lkawo"]
 [ext_resource type="PackedScene" uid="uid://w8v2j6vd2cdc" path="res://nodes/items/fragile_object.tscn" id="6_3ci5w"]
-[ext_resource type="Texture2D" uid="uid://b7d3ck5i4kxwn" path="res://assets/textures/Decal/Fix.png" id="6_r34wq"]
-[ext_resource type="Texture2D" uid="uid://bd1dsigkvg08w" path="res://assets/textures/Decal/Metal.png" id="7_ih41v"]
+[ext_resource type="Texture2D" uid="uid://c2x0ydho4fu0" path="res://assets/textures/Decal/Fix.png" id="6_r34wq"]
+[ext_resource type="Texture2D" uid="uid://dmxpycg321d36" path="res://assets/textures/Decal/Metal.png" id="7_ih41v"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_hdesx"]
 
@@ -21,11 +20,18 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_o0muk"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_8s2nd"]
+flip_faces = true
+size = Vector3(10, 5, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_26w2j"]
+data = PackedVector3Array(5, 2.5, 5, -5, 2.5, 5, -5, -2.5, 5, 5, -2.5, 5, 5, 2.5, 5, -5, -2.5, 5, -5, 2.5, -5, 5, 2.5, -5, 5, -2.5, -5, -5, -2.5, -5, -5, 2.5, -5, 5, -2.5, -5, 5, 2.5, -5, 5, 2.5, 5, 5, -2.5, 5, 5, -2.5, -5, 5, 2.5, -5, 5, -2.5, 5, -5, 2.5, 5, -5, 2.5, -5, -5, -2.5, -5, -5, -2.5, 5, -5, 2.5, 5, -5, -2.5, -5, -5, 2.5, 5, 5, 2.5, 5, 5, 2.5, -5, -5, 2.5, -5, -5, 2.5, 5, 5, 2.5, -5, 5, -2.5, 5, -5, -2.5, 5, -5, -2.5, -5, 5, -2.5, -5, 5, -2.5, 5, -5, -2.5, -5)
+
 [node name="Interior" type="Node3D"]
 
 [node name="Fragiles Controller" type="Node" parent="." node_paths=PackedStringArray("DESTRUCTIBLES")]
 script = ExtResource("2_dlw3l")
-DESTRUCTIBLES = [NodePath("../Fragile Object"), NodePath("../Fragile Object2"), NodePath("../Fragile Object3")]
+DESTRUCTIBLES = [NodePath("../Fragile Object"), NodePath("../Fragile Object2")]
 
 [node name="Player" parent="." instance=ExtResource("4_mm34r")]
 
@@ -45,78 +51,33 @@ item_type = 3
 item_mesh = SubResource("CapsuleMesh_87rvf")
 
 [node name="Fragile Object" parent="." instance=ExtResource("6_3ci5w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.375, 0.025, 7.875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.625, -0.975, 2.125)
 item_type = 2
 high_damage_mesh = SubResource("BoxMesh_6jiv2")
 medium_damage_mesh = SubResource("PrismMesh_d3pet")
 low_damage_mesh = SubResource("CylinderMesh_o0muk")
+FIX_COUNT = 5
 
 [node name="Fragile Object2" parent="." instance=ExtResource("6_3ci5w")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.93898, 0.557233, 2.96862)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.93898, 0.057233, 2.96862)
 item_type = 3
 is_decal = true
 high_damage_decal = ExtResource("5_lkawo")
 medium_damage_decal = ExtResource("6_r34wq")
 low_damage_decal = ExtResource("7_ih41v")
+FIX_COUNT = 120
 
-[node name="Fragile Object3" parent="." instance=ExtResource("6_3ci5w")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.213897, 0.557233, -2.25115)
-item_type = 3
-is_decal = true
-high_damage_decal = ExtResource("5_lkawo")
-medium_damage_decal = ExtResource("6_r34wq")
-low_damage_decal = ExtResource("7_ih41v")
+[node name="Room" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+mesh = SubResource("BoxMesh_8s2nd")
 
-[node name="walls" type="CSGCombiner3D" parent="."]
-use_collision = true
+[node name="Body" type="StaticBody3D" parent="Room"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1)
-flip_faces = true
-size = Vector3(10, 3, 7)
-material = ExtResource("5_v7qj3")
+[node name="Collision" type="CollisionShape3D" parent="Room/Body"]
+shape = SubResource("ConcavePolygonShape3D_26w2j")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 6.5)
-flip_faces = true
-size = Vector3(5, 3, 4)
-material = ExtResource("5_v7qj3")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, -0.25, 6.625)
-flip_faces = true
-size = Vector3(3.75, 6.5, 3.75)
-material = ExtResource("5_v7qj3")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, -2.125, 3.625)
-flip_faces = true
-size = Vector3(1.75, 2.75, 2.5)
-material = ExtResource("5_v7qj3")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, -2, 0)
-flip_faces = true
-size = Vector3(5, 3, 5)
-material = ExtResource("5_v7qj3")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="walls"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 5.65685, 1.5, -2.82843)
-operation = 2
-flip_faces = true
-size = Vector3(5, 3, 5)
-material = ExtResource("5_v7qj3")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="walls"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -5.34315, 1.5, -3.07843)
-operation = 2
-flip_faces = true
-size = Vector3(5, 3, 5)
-material = ExtResource("5_v7qj3")
-
-[node name="Lights" type="Node3D" parent="walls"]
-
-[node name="SpotLight3D" type="SpotLight3D" parent="walls/Lights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.75, 0)
+[node name="SpotLight3D" type="SpotLight3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.25, 0)
+shadow_enabled = true
 spot_range = 15.0
-spot_angle = 90.0
+spot_angle = 80.0

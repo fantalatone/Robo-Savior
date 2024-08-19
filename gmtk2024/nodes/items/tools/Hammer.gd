@@ -6,6 +6,4 @@ func start_use():
 		var obj = INTERACTION.get_collider()
 		if obj.is_in_group("Fragiles"):
 			if obj.item_type == type:
-				obj._heal(10)
-				Robot.instance.HEALTH._heal(50)
-				obj._update_visuals()
+				obj._try_to_fix()

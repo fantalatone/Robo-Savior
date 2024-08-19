@@ -24,7 +24,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * 3.0
 
 	if not get_tree().current_scene.get_node("Interior").visible: return
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")

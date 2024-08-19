@@ -21,15 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 
 [node name="UFO" parent="." instance=ExtResource("4_m4feq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 17)
-SPAWN_COOLDOWN = 5.0
-
-[node name="UFO2" parent="." instance=ExtResource("4_m4feq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 17)
-SPAWN_COOLDOWN = 6.0
-
-[node name="UFO3" parent="." instance=ExtResource("4_m4feq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 17)
-SPAWN_COOLDOWN = 7.0
+SPAWN_COOLDOWN = 15.0
 
 [node name="GUI Layer" type="CanvasLayer" parent="."]
 

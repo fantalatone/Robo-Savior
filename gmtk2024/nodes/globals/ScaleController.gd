@@ -6,7 +6,7 @@ enum SCALE { HUMAN, ROBOT }
 var human : Player
 var robot : Robot
 
-var current_scale : SCALE = SCALE.ROBOT
+var current_scale : SCALE = SCALE.HUMAN
 
 func init_system() -> void:
 	human = get_tree().current_scene.find_child("Player")

@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://nodes/items/ItemInteraction.gd" id="1_8nlg0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyine"]
-size = Vector3(0.5, 0.5, 0.5)
 
 [node name="Item Interaction" type="Area3D" groups=["Items"]]
 script = ExtResource("1_8nlg0")

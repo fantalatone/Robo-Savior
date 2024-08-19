@@ -14,8 +14,10 @@ class_name FragileObject
 @export var medium_damage_mesh : Mesh
 @export var low_damage_mesh : Mesh
 
-const MAX_HEALTH : int = 100
-var health : float = 100
+var damage : int = 0
+
+@export var FIX_COUNT : int = 3
+var fix_tick : int = 0
 
 @onready var DECAL : Decal = $Decal
 @onready var MESH : MeshInstance3D = $Mesh
@@ -27,24 +29,36 @@ func _ready() -> void:
 		MESH.mesh = low_damage_mesh
 		return
 
-func _heal(amount : float):
-	health += amount
+func _broke_one_level() -> void:
+	damage += 1
+	if damage > 2:
+		damage = 2
 	_update_visuals()
-	if health >= MAX_HEALTH:
-		health = MAX_HEALTH
+
+func _fix_one_level() -> void:
+	damage -= 1
+	if damage < 0:
+		damage = 0
+	_update_visuals()
+
+func _try_to_fix() -> void:
+	fix_tick += 1
+	if fix_tick >= FIX_COUNT:
+		fix_tick = 0
+		_fix_one_level()
 
 func _update_visuals():
 	if is_decal:
-		if health > 0 and health <= 30:
-			DECAL.texture_albedo = high_damage_decal
-		if health > 30 and health <= 70:
-			DECAL.texture_albedo = medium_damage_decal
-		if health > 70:
+		if damage == 0:
 			DECAL.texture_albedo = low_damage_decal
+		if damage == 1:
+			DECAL.texture_albedo = medium_damage_decal
+		if damage == 2:
+			DECAL.texture_albedo = high_damage_decal
 		return
-	if health > 0 and health <= 30:
-		MESH.mesh = high_damage_mesh
-	if health > 30 and health <= 70:
-		MESH.mesh = medium_damage_mesh
-	if health > 70:
+	if damage == 0:
 		MESH.mesh = low_damage_mesh
+	if damage == 1:
+		MESH.mesh = medium_damage_mesh
+	if damage == 2:
+		MESH.mesh = high_damage_mesh
