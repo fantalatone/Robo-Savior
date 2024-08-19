@@ -47,10 +47,6 @@ FmodManager="*res://addons/fmod/FmodManager.gd"
 window/size/viewport_width=1200
 window/size/viewport_height=640
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
-
 [global_group]
 
 Items=""
