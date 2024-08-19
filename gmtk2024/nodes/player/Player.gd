@@ -18,7 +18,7 @@ var is_holding_item : bool = false
 var holding_item_type : Interaction.ITEM_TYPE
 @onready var ITEMS_CONTROLLER : ItemsController = $Items
 
-@onready var LISTENER : FmodListener3D = $Listener
+#@onready var LISTENER : FmodListener3D = $Listener
 @onready var FOOTSTEPS : FmodEventEmitter3D = $"Footstep Sound"
 
 func _ready() -> void:
@@ -64,6 +64,9 @@ func handle_interactions() -> bool:
 	if INTERACTION_RAY.is_colliding():
 		var obj = INTERACTION_RAY.get_collider()
 		if obj.is_in_group("Items"): 
+			if obj.type == Interaction.INTERACTION_TYPE.BUTTON: 
+				obj._press()
+				return true
 			interact_with_items(obj)
 			return true
 		return false
@@ -94,7 +97,6 @@ func update_camera_and_body( relative : Vector2 ) -> void:
 
 func _disable_input() -> void:
 	CAM.clear_current()
-	#LISTENER.process_mode = Node.PROCESS_MODE_DISABLED
 	is_being_controlled = false
 
 func _enable_input() -> void:

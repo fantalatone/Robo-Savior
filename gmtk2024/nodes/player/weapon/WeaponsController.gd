@@ -66,14 +66,12 @@ func _process(_delta: float) -> void:
 	if current_plasma_ammo <= 0:
 		return
 	
-	print("Plasma Blast!")
 	current_plasma_ammo -= 1
 	plasma_gun_timer.start(PLASMA_GUN_FIRE_RATE)
 	spawn_plasma_bullet()
 	shoot()
 
 func pickup_throwable( throwable : RigidBody3D ) -> void:
-	print("Pick it up!")
 	holding_throwable = throwable
 	holding_throwable.freeze = true
 	holding_throwable.reparent(PICKUP_POINT)
@@ -81,7 +79,6 @@ func pickup_throwable( throwable : RigidBody3D ) -> void:
 	is_holding = true
 
 func throw_throwable() -> void:
-	print("Throwing")
 	is_holding = false
 	holding_throwable.freeze = false
 	holding_throwable.linear_velocity = get_parent().transform.basis * CAM.transform.basis * Vector3(0, 1, -20)
@@ -89,7 +86,6 @@ func throw_throwable() -> void:
 	holding_throwable = null
 
 func reload_ammo() -> void:
-	print("Reload Done!")
 	is_reloading = false
 	current_plasma_ammo = MAX_PLASMA_GUN_AMMO
 
