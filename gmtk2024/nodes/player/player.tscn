@@ -1,20 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://c50dea8otgpq"]
+[gd_scene load_steps=9 format=3 uid="uid://c50dea8otgpq"]
 
 [ext_resource type="Script" path="res://nodes/player/Player.gd" id="1_yjgxl"]
 [ext_resource type="ArrayMesh" uid="uid://c7uywmknsqtlx" path="res://Blowtorch_Mesh.res" id="2_3spjo"]
 [ext_resource type="Script" path="res://nodes/items/ItemsController.gd" id="2_db2k6"]
+[ext_resource type="ArrayMesh" uid="uid://6s7bap5sajfa" path="res://Hammer_Mesh.res" id="3_adsr5"]
 [ext_resource type="Script" path="res://nodes/items/tools/Hammer.gd" id="3_ovgei"]
 [ext_resource type="Script" path="res://nodes/items/tools/Blowtorch.gd" id="5_tsqy4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wy2g"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xdmc8"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_5xo1k"]
-size = Vector3(0.25, 0.8, 0.25)
-
-[sub_resource type="BoxMesh" id="BoxMesh_06uh8"]
-size = Vector3(0.1, 1.2, 0.1)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_yjgxl")
@@ -44,13 +39,10 @@ transform = Transform3D(-0.0258819, 0, 0.0965926, 0, 0.1, 0, -0.0965926, 0, -0.0
 visible = false
 mesh = ExtResource("2_3spjo")
 
-[node name="Extinguisher" type="MeshInstance3D" parent="Camera/Hand"]
-visible = false
-mesh = SubResource("BoxMesh_5xo1k")
-
 [node name="Hammer" type="MeshInstance3D" parent="Camera/Hand"]
+transform = Transform3D(300, 0, 0, 0, -1.31134e-05, 300, 0, -300, -1.31134e-05, 0, 0, 0)
 visible = false
-mesh = SubResource("BoxMesh_06uh8")
+mesh = ExtResource("3_adsr5")
 
 [node name="Items" type="Node3D" parent="."]
 script = ExtResource("2_db2k6")

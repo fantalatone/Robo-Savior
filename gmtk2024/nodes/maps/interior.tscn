@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6lar545dkqe1"]
+[gd_scene load_steps=15 format=3 uid="uid://c6lar545dkqe1"]
 
 [ext_resource type="Script" path="res://nodes/items/FragilesController.gd" id="2_dlw3l"]
 [ext_resource type="PackedScene" uid="uid://c50dea8otgpq" path="res://nodes/player/player.tscn" id="4_mm34r"]
 [ext_resource type="PackedScene" uid="uid://d2k5o7e0bm87j" path="res://nodes/items/item_interaction.tscn" id="5_0ov5v"]
+[ext_resource type="Texture2D" uid="uid://234rog65la2g" path="res://assets/textures/Decal/Crack.png" id="5_lkawo"]
 [ext_resource type="Material" uid="uid://dwj5dx6x1r82h" path="res://materials/interior.tres" id="5_v7qj3"]
 [ext_resource type="PackedScene" uid="uid://w8v2j6vd2cdc" path="res://nodes/items/fragile_object.tscn" id="6_3ci5w"]
+[ext_resource type="Texture2D" uid="uid://c2x0ydho4fu0" path="res://assets/textures/Decal/Fix.png" id="6_r34wq"]
+[ext_resource type="Texture2D" uid="uid://dmxpycg321d36" path="res://assets/textures/Decal/Metal.png" id="7_ih41v"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_hdesx"]
 
@@ -22,7 +25,7 @@
 
 [node name="Fragiles Controller" type="Node" parent="." node_paths=PackedStringArray("DESTRUCTIBLES")]
 script = ExtResource("2_dlw3l")
-DESTRUCTIBLES = [NodePath("../Fragile Object")]
+DESTRUCTIBLES = [NodePath("../Fragile Object"), NodePath("../Fragile Object2"), NodePath("../Fragile Object3")]
 
 [node name="Player" parent="." instance=ExtResource("4_mm34r")]
 
@@ -43,10 +46,26 @@ item_mesh = SubResource("CapsuleMesh_87rvf")
 
 [node name="Fragile Object" parent="." instance=ExtResource("6_3ci5w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.375, 0.025, 7.875)
-item_type = 3
+item_type = 2
 high_damage_mesh = SubResource("BoxMesh_6jiv2")
 medium_damage_mesh = SubResource("PrismMesh_d3pet")
 low_damage_mesh = SubResource("CylinderMesh_o0muk")
+
+[node name="Fragile Object2" parent="." instance=ExtResource("6_3ci5w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.93898, 0.557233, 2.96862)
+item_type = 3
+is_decal = true
+high_damage_decal = ExtResource("5_lkawo")
+medium_damage_decal = ExtResource("6_r34wq")
+low_damage_decal = ExtResource("7_ih41v")
+
+[node name="Fragile Object3" parent="." instance=ExtResource("6_3ci5w")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.213897, 0.557233, -2.25115)
+item_type = 3
+is_decal = true
+high_damage_decal = ExtResource("5_lkawo")
+medium_damage_decal = ExtResource("6_r34wq")
+low_damage_decal = ExtResource("7_ih41v")
 
 [node name="walls" type="CSGCombiner3D" parent="."]
 use_collision = true

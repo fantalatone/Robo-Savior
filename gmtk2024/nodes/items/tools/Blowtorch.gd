@@ -7,5 +7,6 @@ func _process(delta: float) -> void:
 	if is_being_used and INTERACTION.is_colliding():
 		var obj = INTERACTION.get_collider()
 		if obj.is_in_group("Fragiles"):
-			obj._heal(delta * 10)
-			Robot.instance.HEALTH._heal(2)
+			if obj.item_type == type:
+				obj._heal(delta * 10)
+				Robot.instance.HEALTH._heal(2)
