@@ -28,6 +28,7 @@ func _ready() -> void:
 		DECAL.process_mode = Node.PROCESS_MODE_DISABLED
 		MESH.mesh = low_damage_mesh
 		return
+	DECAL.texture_albedo = low_damage_decal
 
 func _broke_one_level() -> void:
 	Robot.instance.HEALTH._add_damage_point(1)

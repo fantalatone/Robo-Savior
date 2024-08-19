@@ -12,6 +12,9 @@ class_name WeaponsController
 @export var PLASMA_GUN_FIRE_RATE : float = 0.2
 @export var PLASMA_GUN_BARREL_POINT : Marker3D
 
+@export_group("Sounds")
+@onready var PLASMA_GUN_SHOOT : FmodEventEmitter3D = $"../Plasma Gun Shoot"
+
 @onready var PLASMA_BULLET := preload("res://nodes/player/bullet/bullet.tscn")
 
 var is_firing : bool = false
@@ -93,6 +96,7 @@ func shoot() -> void:
 	if WEAPON_RAY.is_colliding():
 		if WEAPON_RAY.get_collider() is Enemy:
 			WEAPON_RAY.get_collider()._damage(20)
+	PLASMA_GUN_SHOOT.play()
 	
 	spawn_plasma_bullet()
 

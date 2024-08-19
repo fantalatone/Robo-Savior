@@ -9,5 +9,3 @@ script = ExtResource("1_8nlg0")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_gyine")
-
-[node name="Visual" type="MeshInstance3D" parent="."]

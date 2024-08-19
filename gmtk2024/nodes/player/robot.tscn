@@ -74,7 +74,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, -0.25, -1.5)
 [node name="Weapons" type="Node3D" parent="." node_paths=PackedStringArray("PLASMA_GUN_BARREL_POINT")]
 script = ExtResource("3_2vmnv")
 MAX_PLASMA_GUN_AMMO = 50
-PLASMA_GUN_FIRE_RATE = 0.25
+PLASMA_GUN_FIRE_RATE = 0.3
 PLASMA_GUN_BARREL_POINT = NodePath("../Camera/Plasma Gun/Bullet Point")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
@@ -82,7 +82,9 @@ libraries = {
 "": SubResource("AnimationLibrary_ffkyl")
 }
 
-[node name="Listener" type="FmodListener3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+[node name="Plasma Gun Shoot" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/sfx/Lasershot"
+event_guid = "{ca424215-0eba-46c6-b40d-aa459a057cd6}"
+volume = 0.2
 
 [connection signal="animation_finished" from="Animation" to="." method="_on_anim_finished"]

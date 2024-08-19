@@ -4,7 +4,7 @@ class_name Player
 const MOUSE_SENSIVITY : float = 0.3
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 5.5
 
 @onready var CAM : Camera3D = $Camera
 var camera_pitch : float = 0.0
@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		
-		if randf() < 0.1:
+		if randf() < 0.01:
 			FOOTSTEPS.play()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
