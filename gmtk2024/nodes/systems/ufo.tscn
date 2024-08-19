@@ -8,4 +8,5 @@
 script = ExtResource("1_8fvo3")
 
 [node name="Visual" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_gyukg")

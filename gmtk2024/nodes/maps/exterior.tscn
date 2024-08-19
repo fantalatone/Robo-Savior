@@ -36,6 +36,7 @@ mesh = SubResource("PlaneMesh_tbscy")
 
 [node name="Eyebull" parent="Navigation/Floor" instance=ExtResource("2_oornn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 9, -53)
+visible = false
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Navigation"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)

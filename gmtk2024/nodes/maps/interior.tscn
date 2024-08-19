@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://nodes/items/FragilesController.gd" id="2_dlw3l"]
 [ext_resource type="PackedScene" uid="uid://c50dea8otgpq" path="res://nodes/player/player.tscn" id="4_mm34r"]
 [ext_resource type="PackedScene" uid="uid://d2k5o7e0bm87j" path="res://nodes/items/item_interaction.tscn" id="5_0ov5v"]
-[ext_resource type="Texture2D" uid="uid://234rog65la2g" path="res://assets/textures/Decal/Crack.png" id="5_lkawo"]
+[ext_resource type="Texture2D" uid="uid://co2wb4ihqifca" path="res://assets/textures/Decal/Crack.png" id="5_lkawo"]
 [ext_resource type="Material" uid="uid://dwj5dx6x1r82h" path="res://materials/interior.tres" id="5_v7qj3"]
 [ext_resource type="PackedScene" uid="uid://w8v2j6vd2cdc" path="res://nodes/items/fragile_object.tscn" id="6_3ci5w"]
-[ext_resource type="Texture2D" uid="uid://c2x0ydho4fu0" path="res://assets/textures/Decal/Fix.png" id="6_r34wq"]
-[ext_resource type="Texture2D" uid="uid://dmxpycg321d36" path="res://assets/textures/Decal/Metal.png" id="7_ih41v"]
+[ext_resource type="Texture2D" uid="uid://b7d3ck5i4kxwn" path="res://assets/textures/Decal/Fix.png" id="6_r34wq"]
+[ext_resource type="Texture2D" uid="uid://bd1dsigkvg08w" path="res://assets/textures/Decal/Metal.png" id="7_ih41v"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_hdesx"]
 
