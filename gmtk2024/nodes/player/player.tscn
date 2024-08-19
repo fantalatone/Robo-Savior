@@ -59,3 +59,8 @@ mesh = NodePath("../../Camera/Hand/Hammer")
 script = ExtResource("5_tsqy4")
 type = 3
 mesh = NodePath("../../Camera/Hand/Blowtorch")
+
+[node name="Footstep Sound" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/sfx/Footsteps"
+event_guid = "{b6376588-4a73-43a5-8a5e-96c33d8d3234}"
+volume = 0.5

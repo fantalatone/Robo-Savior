@@ -18,6 +18,9 @@ var is_holding_item : bool = false
 var holding_item_type : Interaction.ITEM_TYPE
 @onready var ITEMS_CONTROLLER : ItemsController = $Items
 
+@onready var LISTENER : FmodListener3D = $Listener
+@onready var FOOTSTEPS : FmodEventEmitter3D = $"Footstep Sound"
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -33,6 +36,9 @@ func _physics_process(delta: float) -> void:
 	if direction and is_being_controlled:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		
+		if randf() < 0.1:
+			FOOTSTEPS.play()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -88,6 +94,7 @@ func update_camera_and_body( relative : Vector2 ) -> void:
 
 func _disable_input() -> void:
 	CAM.clear_current()
+	#LISTENER.process_mode = Node.PROCESS_MODE_DISABLED
 	is_being_controlled = false
 
 func _enable_input() -> void:
