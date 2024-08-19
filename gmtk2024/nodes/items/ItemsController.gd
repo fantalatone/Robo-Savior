@@ -5,7 +5,6 @@ var ITEMS = { }
 
 func _ready() -> void:
 	for c in get_children():
-		print(c.visual)
 		ITEMS[c.type] = c
 
 func show_tool( type: Interaction.ITEM_TYPE ):
@@ -14,7 +13,6 @@ func show_tool( type: Interaction.ITEM_TYPE ):
 
 func hide_tools():
 	for c : Item in get_children():
-		print(c)
 		c.visual.hide()
 
 func start_using_item( type: Interaction.ITEM_TYPE ):

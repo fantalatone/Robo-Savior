@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://c50dea8otgpq"]
 
 [ext_resource type="Script" path="res://nodes/player/Player.gd" id="1_yjgxl"]
+[ext_resource type="PackedScene" uid="uid://c0s583thfsoq" path="res://assets/blender/Blowtorch.fbx" id="2_24ek1"]
 [ext_resource type="Script" path="res://nodes/items/ItemsController.gd" id="2_db2k6"]
-[ext_resource type="PackedScene" uid="uid://cwyyrwusp0sdj" path="res://assets/blender/Blowtorch.blend" id="3_g75jn"]
 [ext_resource type="Script" path="res://nodes/items/tools/Hammer.gd" id="3_ovgei"]
 [ext_resource type="Script" path="res://nodes/items/tools/Blowtorch.gd" id="5_tsqy4"]
 
@@ -38,11 +38,12 @@ collide_with_areas = true
 [node name="Hand" type="Marker3D" parent="Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, -0.25, -0.55)
 
-[node name="Blowtorch" parent="Camera/Hand" instance=ExtResource("3_g75jn")]
-transform = Transform3D(-0.155291, 0, 0.579555, 0, 0.6, 0, -0.579555, 0, -0.155291, 0, 0, 0)
+[node name="Blowtorch" parent="Camera/Hand" instance=ExtResource("2_24ek1")]
+transform = Transform3D(-0.155291, 0, 0.579556, 0, 0.6, 0, -0.579556, 0, -0.155291, 0, -0.25, 0)
 visible = false
 
 [node name="Hammer" type="MeshInstance3D" parent="Camera/Hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false
 mesh = SubResource("BoxMesh_bj84l")
 
