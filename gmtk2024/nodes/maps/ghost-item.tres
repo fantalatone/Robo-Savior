@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dwn02ao2e24st"]
+
+[ext_resource type="Shader" path="res://nodes/maps/interior.gdshader" id="1_gmd3l"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gmd3l")
+shader_parameter/should_render = true
