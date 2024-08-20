@@ -10,9 +10,10 @@ radius = 1.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_1bl0w"]
 radius = 1.25
 
-[node name="Eyebull" type="CharacterBody3D"]
+[node name="Eyebull" type="CharacterBody3D" node_paths=PackedStringArray("MESH")]
 script = ExtResource("1_t6g3n")
 MAX_HEALTH = 80
+MESH = NodePath("Eyeball/Eyebull")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_1kpjt")
@@ -27,3 +28,5 @@ script = ExtResource("3_rdi3k")
 shape = SubResource("SphereShape3D_1bl0w")
 
 [connection signal="body_entered" from="Attack Collision" to="Attack Collision" method="_on_body_entered"]
+
+[editable path="Eyeball"]

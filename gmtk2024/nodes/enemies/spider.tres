@@ -1,0 +1,38 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://bx71hp5gdb1d0"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_okmb2"]
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_qvy2e"]
+parameter_name = "Flash"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_lk4ob"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2 : source_color;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-287.382, 61.3799)
+nodes/fragment/0/position = Vector2(-60, 800)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_okmb2")
+nodes/fragment/2/position = Vector2(-400, 700)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_qvy2e")
+nodes/fragment/3/position = Vector2(-400, 420)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatOp_lk4ob")
+nodes/fragment/4/position = Vector2(-60, 380)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 2, 0, 4, 1, 2, 0, 0, 0)

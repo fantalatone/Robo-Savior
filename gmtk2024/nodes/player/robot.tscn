@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bp04jlmywhkvs"]
+[gd_scene load_steps=10 format=3 uid="uid://bp04jlmywhkvs"]
 
 [ext_resource type="Script" path="res://nodes/player/Robot.gd" id="1_hhfwq"]
 [ext_resource type="Script" path="res://nodes/player/HealthSystem.gd" id="2_dv8wx"]
@@ -33,25 +33,6 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_djnlk"]
 material = SubResource("StandardMaterial3D_ta5h3")
-
-[sub_resource type="Animation" id="Animation_2clr2"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_2h0hw"]
-resource_name = "idle"
-length = 0.5
-loop_mode = 1
-
-[sub_resource type="Animation" id="Animation_pxnp8"]
-resource_name = "slash"
-length = 0.2
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ffkyl"]
-_data = {
-"RESET": SubResource("Animation_2clr2"),
-"idle": SubResource("Animation_2h0hw"),
-"slash": SubResource("Animation_pxnp8")
-}
 
 [node name="Robot" type="CharacterBody3D"]
 script = ExtResource("1_hhfwq")
@@ -104,14 +85,7 @@ MAX_PLASMA_GUN_AMMO = 50
 PLASMA_GUN_FIRE_RATE = 0.3
 PLASMA_GUN_BARREL_POINT = NodePath("../Camera/Plasma Gun/Bullet Point")
 
-[node name="Animation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ffkyl")
-}
-
 [node name="Plasma Gun Shoot" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/sfx/Lasershot"
 event_guid = "{ca424215-0eba-46c6-b40d-aa459a057cd6}"
 volume = 0.2
-
-[connection signal="animation_finished" from="Animation" to="." method="_on_anim_finished"]

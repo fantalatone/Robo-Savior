@@ -14,6 +14,7 @@ var timer_t : Timer = Timer.new()
 const SPEED : int = 6.0
 
 func _ready() -> void:
+	super._ready()
 	timer_t.one_shot = true
 	timer_t.timeout.connect(func(): 
 		desired_height = 15 

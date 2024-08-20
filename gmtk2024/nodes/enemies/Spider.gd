@@ -16,6 +16,12 @@ const SPEED = 6.5
 var feedback_timer : Timer = Timer.new()
 
 func _ready() -> void:
+	super._ready()
+	feedback_timer.one_shot = true
+	add_child(feedback_timer)
+	
+	var i = randf_range(0.8, 1.2)
+	scale = Vector3(i, i, i)
 	
 	robot = Robot.instance
 	ANIM.play("IDLE")
@@ -25,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * 2.0 * delta
 	
 	AGENT.target_position = robot.global_position
-	should_attack = global_position.distance_to(robot.global_position) <= 3.0
+	should_attack = global_position.distance_to(robot.global_position) <= (3.0 * scale.x)
 	if prev_should_attack != should_attack:
 		prev_should_attack = should_attack
 		if should_attack:
@@ -39,8 +45,7 @@ func _physics_process(delta: float) -> void:
 		
 		ANIM.play("WALK")
 
-	if should_attack:
-		
+	if should_attack or not feedback_timer.is_stopped():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
@@ -56,7 +61,7 @@ func _physics_process(delta: float) -> void:
 
 func _damage( amount: int ) -> void:
 	super._damage(amount)
-	velocity = Vector2.ZERO
+	feedback_timer.start(0.15)
 
 func attack() -> void:
 	var b : Node3D = ATTACK_SPHERE.instantiate()
