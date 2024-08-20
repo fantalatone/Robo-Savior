@@ -1,17 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfdftvpfvu5rw"]
+[gd_scene load_steps=9 format=3 uid="uid://bfdftvpfvu5rw"]
 
 [ext_resource type="Script" path="res://nodes/enemies/Spider.gd" id="1_t7r8u"]
 [ext_resource type="PackedScene" uid="uid://cnmeyn1vdhhby" path="res://assets/blender/Spider.fbx" id="2_7c528"]
-[ext_resource type="Shader" uid="uid://bx71hp5gdb1d0" path="res://nodes/enemies/spider.tres" id="3_5buy1"]
-[ext_resource type="Texture2D" uid="uid://dvo76hq7jyop0" path="res://assets/textures/Spider.jpg" id="3_7gu0c"]
+[ext_resource type="Material" uid="uid://dyixlii1346dc" path="res://materials/spider.tres" id="3_0yo6g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8odqn"]
 size = Vector3(1.75, 1.75, 3.25)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kllou"]
-render_priority = 0
-shader = ExtResource("3_5buy1")
-shader_parameter/tex_frg_2 = ExtResource("3_7gu0c")
 
 [sub_resource type="Animation" id="Animation_mp2we"]
 resource_name = "ATTACK"
@@ -427,20 +421,17 @@ _data = {
 "WALK": SubResource("Animation_qpibo")
 }
 
-[node name="Spider" type="CharacterBody3D" node_paths=PackedStringArray("MESH")]
+[node name="Spider" type="CharacterBody3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_t7r8u")
-MESH = NodePath("Spider/Armature/Skeleton3D/Cube_003")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, -0.125)
 shape = SubResource("BoxShape3D_8odqn")
 
 [node name="Agent" type="NavigationAgent3D" parent="."]
-avoidance_layers = 5
-avoidance_mask = 5
 
 [node name="Attack Point" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -2.45)
@@ -493,12 +484,14 @@ bones/14/position = Vector3(-0.0755234, -0.00491518, -0.04185)
 bones/15/position = Vector3(-0.0122135, -0.0236824, 0.0268683)
 
 [node name="Cube_003" parent="Spider/Armature/Skeleton3D" index="0"]
-material_override = SubResource("ShaderMaterial_kllou")
+material_override = ExtResource("3_0yo6g")
 
 [node name="AnimationPlayer" parent="Spider" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_41b4r")
 }
 playback_default_blend_time = 0.5
+
+[connection signal="link_reached" from="Agent" to="." method="_on_agent_link_reached"]
 
 [editable path="Spider"]

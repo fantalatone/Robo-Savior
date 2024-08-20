@@ -3,4 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dvo76hq7jyop0" path="res://assets/textures/Spider.jpg" id="1_36iea"]
 
 [resource]
+diffuse_mode = 3
 albedo_texture = ExtResource("1_36iea")
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0

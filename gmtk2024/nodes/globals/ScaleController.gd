@@ -12,17 +12,26 @@ func init_system() -> void:
 	human = get_tree().current_scene.find_child("Player")
 	robot = get_tree().current_scene.find_child("Robot")
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("change_scale"):
-		_change_scale()
+func _change_to_robot():
+	current_scale = SCALE.ROBOT
+	_change_scale()
+
+func _change_to_human():
+	current_scale = SCALE.HUMAN
+	_change_scale()
 
 func _change_scale() -> void:
-	current_scale = SCALE.ROBOT if current_scale == SCALE.HUMAN else SCALE.HUMAN
-	
-	match current_scale:
-		SCALE.HUMAN:
-			human._enable_input()
-			robot._disable_input()
-		SCALE.ROBOT:
-			human._disable_input()
-			robot._enable_input()
+	if human and robot:
+		match current_scale:
+			SCALE.HUMAN:
+				human._enable_input()
+				robot._disable_input()
+			SCALE.ROBOT:
+				human._disable_input()
+				robot._enable_input()
+
+func change_sound_scale_parameter():
+	for c in get_tree().current_scene.get_children(true):
+		if c is FmodEventEmitter3D:
+			var f : FmodEventEmitter3D = c
+			#f["event_parameter/Scale Change/value"] = 1

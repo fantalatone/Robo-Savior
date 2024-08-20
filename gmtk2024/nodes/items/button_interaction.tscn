@@ -1,16 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://blpapbqc7oruu"]
+[gd_scene load_steps=3 format=3 uid="uid://blpapbqc7oruu"]
 
 [ext_resource type="Script" path="res://nodes/items/ButtonInteraction.gd" id="1_tfiw7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jf68w"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_48b0n"]
-
-[node name="Button Interaction" type="Area3D"]
+[node name="Button Interaction" type="Area3D" groups=["Items"]]
 script = ExtResource("1_tfiw7")
+type = 1
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_jf68w")
-
-[node name="Visual" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_48b0n")

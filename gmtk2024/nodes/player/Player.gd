@@ -22,9 +22,11 @@ var holding_item_type : Interaction.ITEM_TYPE
 @onready var FOOTSTEPS : FmodEventEmitter3D = $"Footstep Sound"
 
 func _ready() -> void:
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
+	#Robot.instance.HEALTH.damage_taken.connect(func(): print("Hi from player"))
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 3.0

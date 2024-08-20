@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp04jlmywhkvs"]
+[gd_scene load_steps=11 format=3 uid="uid://bp04jlmywhkvs"]
 
 [ext_resource type="Script" path="res://nodes/player/Robot.gd" id="1_hhfwq"]
 [ext_resource type="Script" path="res://nodes/player/HealthSystem.gd" id="2_dv8wx"]
 [ext_resource type="Shader" path="res://shaders/Toon.gdshader" id="3_1gm3q"]
 [ext_resource type="Script" path="res://nodes/player/weapon/WeaponsController.gd" id="3_2vmnv"]
+[ext_resource type="PackedScene" uid="uid://fnrvme7uw5ox" path="res://assets/blender/Robot_arm_Animated.fbx" id="5_mjncm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m748r"]
 height = 3.0
@@ -53,8 +54,24 @@ fov = 95.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 mesh = SubResource("QuadMesh_rj4es")
 
+[node name="Arms" parent="Camera" instance=ExtResource("5_mjncm")]
+transform = Transform3D(-1, -5.39034e-08, 6.88271e-08, 0, 0.78729, 0.616583, -8.74228e-08, 0.616583, -0.78729, -0.394911, -2.43313, -1.63973)
+visible = false
+
+[node name="Skeleton3D" parent="Camera/Arms/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.588275, -0.369556, 0.650148, -0.307683)
+bones/1/rotation = Quaternion(0.641259, 3.922e-05, -0.140299, 0.754389)
+bones/2/rotation = Quaternion(0.392994, -0.575384, 0.635202, 0.333177)
+bones/3/rotation = Quaternion(0.106079, 1.84064e-08, 0.429524, 0.896803)
+bones/4/position = Vector3(3.46945e-18, 0.00635148, 0)
+bones/4/rotation = Quaternion(0.0345953, -3.17804e-09, 0.14008, 0.989536)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-0.00899613, -0.00248183, -0.00304915)
+bones/6/position = Vector3(0.0041662, -0.00885649, 0.00506295)
+
 [node name="Plasma Gun" type="MeshInstance3D" parent="Camera"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.5, -0.5, -1)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.506102, -0.17783, -0.320426)
+visible = false
 mesh = SubResource("BoxMesh_djnlk")
 skeleton = NodePath("../..")
 
@@ -86,6 +103,13 @@ PLASMA_GUN_FIRE_RATE = 0.3
 PLASMA_GUN_BARREL_POINT = NodePath("../Camera/Plasma Gun/Bullet Point")
 
 [node name="Plasma Gun Shoot" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/sfx/Lasershot"
+event_name = "event:/sfx/Exterior_sounds/Lasershot"
 event_guid = "{ca424215-0eba-46c6-b40d-aa459a057cd6}"
-volume = 0.2
+
+[node name="Robot Damage Sound" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/sfx/Exterior_sounds/Robot_damage"
+event_guid = "{9c70d44d-2661-4b1d-ab55-589e13839656}"
+
+[node name="Listener" type="FmodListener3D" parent="."]
+
+[editable path="Camera/Arms"]

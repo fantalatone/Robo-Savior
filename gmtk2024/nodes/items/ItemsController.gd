@@ -9,7 +9,9 @@ func _ready() -> void:
 
 func show_tool( type: Interaction.ITEM_TYPE ):
 	hide_tools()
-	ITEMS[type].visual.show()
+	for c : Item in get_children():
+		if c.type == type:
+			c.visual.show()
 
 func hide_tools():
 	for c : Item in get_children():

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://njat8uknrvqn"]
+
+[node name="Game Music" type="FmodEventEmitter3D"]
+event_name = "event:/music/Gameplay_music"
+event_guid = "{4bd1473c-a98f-4792-a8e8-c30b021c8a40}"
+"event_parameter/Scale Change/id" = 7622125459741236795
+"event_parameter/Scale Change/value" = 0.0
+"event_parameter/Scale Change/min_value" = 0.0
+"event_parameter/Scale Change/max_value" = 1.0
+"event_parameter/Scale Change/default_value" = 0.0
+"event_parameter/Scale Change/variant_type" = 3

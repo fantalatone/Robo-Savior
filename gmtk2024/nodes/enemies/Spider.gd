@@ -16,7 +16,6 @@ const SPEED = 6.5
 var feedback_timer : Timer = Timer.new()
 
 func _ready() -> void:
-	super._ready()
 	feedback_timer.one_shot = true
 	add_child(feedback_timer)
 	
@@ -61,9 +60,14 @@ func _physics_process(delta: float) -> void:
 
 func _damage( amount: int ) -> void:
 	super._damage(amount)
-	feedback_timer.start(0.15)
+	feedback_timer.start(0.08)
 
 func attack() -> void:
 	var b : Node3D = ATTACK_SPHERE.instantiate()
 	get_tree().current_scene.add_child(b)
 	b.global_position = ATTACK_POINT.global_position
+
+
+func _on_agent_link_reached(details: Dictionary) -> void:
+	if details.owner is NavigationLink3D:
+		global_position = details.link_exit_position

@@ -20,6 +20,7 @@ static var instance : Robot
 func _ready() -> void:
 	instance = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -45,6 +46,7 @@ func _physics_process(delta: float) -> void:
 		get_tree().quit()
 
 func _damage(): 
+	get_node("Robot Damage Sound").play()
 	HEALTH._damage()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -53,6 +55,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Handle left mouse button event
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("change_scale"):
+		ScaleManager._change_to_human()
+	
 	if Input.is_action_just_pressed("reload") and is_being_controlled:
 		WEAPONS.handle_reload()
 	

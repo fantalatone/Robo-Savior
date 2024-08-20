@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ml0cefhji71y"]
+
+[ext_resource type="Texture2D" uid="uid://dshb8hyxow6wb" path="res://assets/textures/Hammer.jpg" id="1_6jwdu"]
+
+[resource]
+resource_name = "Material"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_6jwdu")

@@ -1,16 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://c50dea8otgpq"]
+[gd_scene load_steps=16 format=3 uid="uid://c50dea8otgpq"]
 
 [ext_resource type="Script" path="res://nodes/player/Player.gd" id="1_yjgxl"]
 [ext_resource type="Shader" path="res://shaders/Toon.gdshader" id="2_7w4ec"]
 [ext_resource type="PackedScene" uid="uid://c0s583thfsoq" path="res://assets/blender/Blowtorch.fbx" id="2_24ek1"]
 [ext_resource type="Script" path="res://nodes/items/ItemsController.gd" id="2_db2k6"]
 [ext_resource type="PackedScene" uid="uid://bpvhhwcjiqrvu" path="res://assets/blender/Hammer.glb" id="2_e5i16"]
+[ext_resource type="Texture2D" uid="uid://dh3g2rt2i8gyx" path="res://assets/textures/Drill.png" id="2_g7k15"]
+[ext_resource type="PackedScene" uid="uid://bloai0ph2xslp" path="res://assets/blender/Drill.fbx" id="3_hqhfe"]
 [ext_resource type="Script" path="res://nodes/items/tools/Hammer.gd" id="3_ovgei"]
 [ext_resource type="Script" path="res://nodes/items/tools/Blowtorch.gd" id="5_tsqy4"]
+[ext_resource type="Script" path="res://nodes/items/Item.gd" id="11_gdl2h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7wy2g"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xdmc8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3reyg"]
+albedo_texture = ExtResource("2_g7k15")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6egg3"]
 render_priority = 0
@@ -46,12 +52,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_xdmc8")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.19564e-08, 1.75, 2.08529e-08)
 current = true
 fov = 95.0
 
 [node name="Toon Shader" type="MeshInstance3D" parent="Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
+material_override = SubResource("StandardMaterial3D_3reyg")
 mesh = SubResource("QuadMesh_s34dl")
 
 [node name="Interaction" type="RayCast3D" parent="Camera"]
@@ -64,7 +71,11 @@ collide_with_areas = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, -0.25, -0.55)
 
 [node name="Hammer" parent="Camera/Hand" instance=ExtResource("2_e5i16")]
-transform = Transform3D(0.38637, 0, 0.103528, 0, 0.4, 0, -0.103528, 0, 0.38637, 0, 0, -0.25)
+transform = Transform3D(0.532247, 0, 0.13861, 0, 0.55, 0, -0.13861, 0, 0.532247, -0.0509561, 0, 0.0214956)
+visible = false
+
+[node name="Drill" parent="Camera/Hand" instance=ExtResource("3_hqhfe")]
+transform = Transform3D(1.97261, 0, -3.47977, 0, 4, 0, 3.47977, 0, 1.97261, -0.106567, 0, -0.112101)
 visible = false
 
 [node name="Blowtorch" parent="Camera/Hand" instance=ExtResource("2_24ek1")]
@@ -74,21 +85,30 @@ visible = false
 [node name="Items" type="Node3D" parent="."]
 script = ExtResource("2_db2k6")
 
-[node name="Hammer" type="Node3D" parent="Items" node_paths=PackedStringArray("visual")]
-script = ExtResource("3_ovgei")
-type = 2
-visual = NodePath("../../Camera/Hand/Hammer")
-
 [node name="Blowtorch" type="Node3D" parent="Items" node_paths=PackedStringArray("visual")]
 script = ExtResource("5_tsqy4")
 type = 3
 visual = NodePath("../../Camera/Hand/Blowtorch")
 
+[node name="Drill" type="Node3D" parent="Items" node_paths=PackedStringArray("visual")]
+script = ExtResource("11_gdl2h")
+type = 1
+visual = NodePath("../../Camera/Hand/Drill")
+
+[node name="Hammer" type="Node3D" parent="Items" node_paths=PackedStringArray("visual")]
+script = ExtResource("3_ovgei")
+type = 2
+visual = NodePath("../../Camera/Hand/Hammer")
+
 [node name="Footstep Sound" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/sfx/Footsteps/Footsteps"
 event_guid = "{b6376588-4a73-43a5-8a5e-96c33d8d3234}"
-volume = 0.5
+"event_parameter/Scale Change/id" = 7622125459741236795
+"event_parameter/Scale Change/value" = 1.0
+"event_parameter/Scale Change/min_value" = 0.0
+"event_parameter/Scale Change/max_value" = 1.0
+"event_parameter/Scale Change/default_value" = 0.0
+"event_parameter/Scale Change/variant_type" = 3
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 current = true
-
-[node name="Listener" type="FmodListener3D" parent="."]

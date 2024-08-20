@@ -1,25 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://b67o6clemlr8h"]
+[gd_scene load_steps=8 format=3 uid="uid://b67o6clemlr8h"]
 
-[ext_resource type="PackedScene" uid="uid://bdp25ps67su58" path="res://assets/blender/Eyeball.fbx" id="1_icxjm"]
 [ext_resource type="Script" path="res://nodes/enemies/Eyebull.gd" id="1_t6g3n"]
+[ext_resource type="PackedScene" uid="uid://csa1elc3m487a" path="res://assets/blender/Eyebull.glb" id="2_vp6bc"]
 [ext_resource type="Script" path="res://nodes/player/bullet/MeleeAttack.gd" id="3_rdi3k"]
+[ext_resource type="Texture2D" uid="uid://cyaifd2fg3hdg" path="res://assets/textures/Eyebull.png" id="3_ropy0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1kpjt"]
 radius = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xxyd"]
+albedo_texture = ExtResource("3_ropy0")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_1bl0w"]
 radius = 1.25
 
-[node name="Eyebull" type="CharacterBody3D" node_paths=PackedStringArray("MESH")]
+[node name="Eyebull" type="CharacterBody3D"]
 script = ExtResource("1_t6g3n")
 MAX_HEALTH = 80
-MESH = NodePath("Eyeball/Eyebull")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_1kpjt")
 
-[node name="Eyeball" parent="." instance=ExtResource("1_icxjm")]
+[node name="Eyebull" parent="." instance=ExtResource("2_vp6bc")]
+
+[node name="Eyebull" parent="Eyebull" index="0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_4xxyd")
 
 [node name="Attack Collision" type="Area3D" parent="."]
 script = ExtResource("3_rdi3k")
@@ -29,4 +35,4 @@ shape = SubResource("SphereShape3D_1bl0w")
 
 [connection signal="body_entered" from="Attack Collision" to="Attack Collision" method="_on_body_entered"]
 
-[editable path="Eyeball"]
+[editable path="Eyebull"]
