@@ -1,6 +1,6 @@
 extends FragileObject
 
-@onready var DECAL : Decal = $Decal
+@onready var SPRITE : Sprite3D = $Sprite
 
 @export_group("Decal Settings")
 @export var high_damage_decal : Texture2D
@@ -9,8 +9,8 @@ extends FragileObject
 
 func _update_visuals():
 	if damage == 0:
-		DECAL.texture_albedo = low_damage_decal
+		SPRITE.texture = low_damage_decal
 	if damage == 1:
-		DECAL.texture_albedo = medium_damage_decal
+		SPRITE.texture = medium_damage_decal
 	if damage == 2:
-		DECAL.texture_albedo = high_damage_decal
+		SPRITE.texture = high_damage_decal

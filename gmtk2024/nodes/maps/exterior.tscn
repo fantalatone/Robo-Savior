@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://js2r8nxaxcix" path="res://assets/blender/roads/Road_vertical.fbx" id="1_bcsff"]
 [ext_resource type="PackedScene" uid="uid://bp04jlmywhkvs" path="res://nodes/player/robot.tscn" id="1_kqw38"]
 [ext_resource type="Shader" uid="uid://d2rcvkc0memm1" path="res://shaders/repetition.tres" id="1_rmsdg"]
-[ext_resource type="PackedScene" uid="uid://bi0yutnj0j4yy" path="res://assets/blender/roads/Road_curve.fbx" id="2_k81qe"]
+[ext_resource type="PackedScene" uid="uid://dje2degkd6hy" path="res://assets/blender/roads/Road_curve.fbx" id="2_k81qe"]
 [ext_resource type="PackedScene" uid="uid://b67o6clemlr8h" path="res://nodes/enemies/eyebull.tscn" id="2_oornn"]
 [ext_resource type="PackedScene" uid="uid://7nnqgoa2ih3f" path="res://nodes/maps/building.tscn" id="3_xgn1w"]
 [ext_resource type="PackedScene" uid="uid://2b17qx0cf5lx" path="res://tree.tscn" id="5_q2th4"]
@@ -34,43 +34,43 @@ size = Vector2(200, 200)
 [node name="Roads" type="Node3D" parent="."]
 
 [node name="Road_vertical" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -3.5, -0.113226, -5)
+transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -3.75, -0.113226, -5)
 
 [node name="Road_vertical2" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 0.5, -0.113226, -5)
+transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 0.25, -0.113226, -5)
 
 [node name="Road_vertical3" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 4.5, -0.113226, -5)
+transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 4.25, -0.113226, -5)
 
 [node name="Road_vertical4" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 8.5, -0.113226, -5)
+transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 8.25, -0.113226, -5)
 
 [node name="Road_vertical6" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(10, 0, 5.68434e-14, 0, 10, 0, -5.68434e-14, 0, 10, 13.25, -0.113226, 2)
+transform = Transform3D(10, 0, 5.68434e-14, 0, 10, 0, -5.68434e-14, 0, 10, 13.25, -0.113226, 1.98674)
 
 [node name="Road_vertical7" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(10, 0, 5.68434e-14, 0, 10, 0, -5.68434e-14, 0, 10, 13.25, -0.113226, 6)
+transform = Transform3D(10, 0, 5.68434e-14, 0, 10, 0, -5.68434e-14, 0, 10, 13.25, -0.113226, 5.98674)
 
 [node name="Road_vertical8" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(10, 0, 5.68434e-14, 0, 10, 0, -5.68434e-14, 0, 10, 13.25, -0.113226, 10)
+transform = Transform3D(10, 0, 5.68434e-14, 0, 10, 0, -5.68434e-14, 0, 10, 13.25, -0.113226, 9.98674)
 
 [node name="Road_vertical9" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(10, 0, 5.68434e-14, 0, 10, 0, -5.68434e-14, 0, 10, 13.25, -0.113226, 14)
+transform = Transform3D(10, 0, 5.68434e-14, 0, 10, 0, -5.68434e-14, 0, 10, 13.25, -0.113226, 13.9867)
 
 [node name="Road_vertical10" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(10, 0, 5.68434e-14, 0, 10, 0, -5.68434e-14, 0, 10, 13.25, -0.113226, 18)
+transform = Transform3D(10, 0, 5.68434e-14, 0, 10, 0, -5.68434e-14, 0, 10, 13.25, -0.113226, 17.9867)
 
 [node name="Road_vertical5" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -7.5, -0.113226, -5)
+transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -7.75, -0.113226, -5)
 
 [node name="Road_vertical11" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -11.5, -0.113226, -5)
+transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -11.75, -0.113226, -5)
 
 [node name="Road_vertical12" parent="Roads" instance=ExtResource("1_bcsff")]
-transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -15.5, -0.113226, -5)
+transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -15.75, -0.113226, -5)
 
 [node name="Road_curve" parent="Roads" instance=ExtResource("2_k81qe")]
-transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 12.781, -0.113, -4.12391)
+transform = Transform3D(-10, 0, -1.50996e-06, 0, 10, 0, 1.50996e-06, 0, -10, 12.75, -0.113, -4.107)
 
 [node name="Navigation" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_i5kt3")

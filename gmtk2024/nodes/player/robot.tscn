@@ -40,6 +40,7 @@ script = ExtResource("1_hhfwq")
 
 [node name="Health System" type="Node" parent="."]
 script = ExtResource("2_dv8wx")
+DAMAGE_TO_EXPLODE = 20
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

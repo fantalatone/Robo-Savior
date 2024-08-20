@@ -20,7 +20,6 @@ static var instance : Robot
 func _ready() -> void:
 	instance = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

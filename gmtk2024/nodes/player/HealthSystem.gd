@@ -33,5 +33,6 @@ func _death() -> void:
 
 func _remove_damage_point() -> void:
 	CURRENT_TOTAL_DAMAGE -= 1
-	death_timer.stop()
+	if CURRENT_TOTAL_DAMAGE < DAMAGE_TO_EXPLODE:
+		death_timer.stop()
 	GUIController.instance.HEALTH_LABEL.text = str(CURRENT_TOTAL_DAMAGE)
