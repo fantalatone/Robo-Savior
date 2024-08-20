@@ -425,6 +425,8 @@ _data = {
 }
 
 [node name="Spider" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_t7r8u")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -432,6 +434,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, -0.125)
 shape = SubResource("BoxShape3D_8odqn")
 
 [node name="Agent" type="NavigationAgent3D" parent="."]
+avoidance_layers = 5
+avoidance_mask = 5
 
 [node name="Attack Point" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -2.45)

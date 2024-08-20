@@ -44,7 +44,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
-func _damage(amount): HEALTH._damage( amount )
+func _damage(): 
+	HEALTH._damage()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and is_being_controlled:

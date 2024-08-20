@@ -3,9 +3,10 @@
 [ext_resource type="Script" path="res://nodes/player/bullet/MeleeAttack.gd" id="1_7y6lh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lx4yx"]
-radius = 0.8
+radius = 1.1
 
 [node name="Melee Attack" type="Area3D"]
+collision_layer = 4
 script = ExtResource("1_7y6lh")
 
 [node name="Collision" type="CollisionShape3D" parent="."]

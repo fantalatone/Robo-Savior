@@ -12,8 +12,11 @@ func _ready() -> void:
 	death_timer.one_shot = true
 	death_timer.timeout.connect(_death)
 	add_child(death_timer)
+	
+	damage_taken.connect(get_tree().current_scene.find_child("Fragiles Controller")._got_hit)
 
-func _damage( amount: int ) -> void:
+
+func _damage() -> void:
 	damage_taken.emit()
 
 func _add_damage_point( amount: int ) -> void:

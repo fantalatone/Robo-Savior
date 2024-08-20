@@ -11,9 +11,12 @@ var robot
 var should_attack : bool = false
 var prev_should_attack : bool = true
 
-const SPEED = 5.0
+const SPEED = 6.5
+
+var feedback_timer : Timer = Timer.new()
 
 func _ready() -> void:
+	
 	robot = Robot.instance
 	ANIM.play("IDLE")
 
@@ -22,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * 2.0 * delta
 	
 	AGENT.target_position = robot.global_position
-	should_attack = global_position.distance_to(robot.global_position) <= 3.5
+	should_attack = global_position.distance_to(robot.global_position) <= 3.0
 	if prev_should_attack != should_attack:
 		prev_should_attack = should_attack
 		if should_attack:
@@ -50,6 +53,10 @@ func _physics_process(delta: float) -> void:
 			rotation.x = 0.0
 	
 	move_and_slide()
+
+func _damage( amount: int ) -> void:
+	super._damage(amount)
+	velocity = Vector2.ZERO
 
 func attack() -> void:
 	var b : Node3D = ATTACK_SPHERE.instantiate()

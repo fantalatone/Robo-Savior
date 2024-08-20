@@ -67,6 +67,7 @@ func _process(_delta: float) -> void:
 	if not plasma_gun_timer.is_stopped():
 		return
 	if current_plasma_ammo <= 0:
+		handle_reload()
 		return
 	
 	current_plasma_ammo -= 1

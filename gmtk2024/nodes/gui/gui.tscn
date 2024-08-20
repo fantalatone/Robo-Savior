@@ -1,12 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6u3rwqla0qjk"]
+[gd_scene load_steps=7 format=3 uid="uid://c6u3rwqla0qjk"]
 
 [ext_resource type="Texture2D" uid="uid://xyimsewunnir" path="res://assets/textures/crosshairs/crosshair-combat.png" id="1_lfxc0"]
 [ext_resource type="Script" path="res://nodes/gui/GUIController.gd" id="1_ls1m7"]
 [ext_resource type="FontFile" uid="uid://teu4n5kt6uk3" path="res://assets/font/VCR_OSD_MONO_1.001.ttf" id="3_jx3w7"]
+[ext_resource type="Shader" path="res://shaders/ps1-style.gdshader" id="4_bt4cb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sxuv6"]
 font = ExtResource("3_jx3w7")
 font_size = 36
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ye1yk"]
+shader = ExtResource("4_bt4cb")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 16
+shader_parameter/dither_size = 1
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -60,3 +68,19 @@ offset_bottom = 52.0
 grow_horizontal = 2
 text = "10000"
 label_settings = SubResource("LabelSettings_sxuv6")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ye1yk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]

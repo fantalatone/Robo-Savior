@@ -1,11 +1,32 @@
-[gd_scene load_steps=11 format=3 uid="uid://bp04jlmywhkvs"]
+[gd_scene load_steps=14 format=3 uid="uid://bp04jlmywhkvs"]
 
 [ext_resource type="Script" path="res://nodes/player/Robot.gd" id="1_hhfwq"]
 [ext_resource type="Script" path="res://nodes/player/HealthSystem.gd" id="2_dv8wx"]
+[ext_resource type="Shader" path="res://shaders/Toon.gdshader" id="3_1gm3q"]
 [ext_resource type="Script" path="res://nodes/player/weapon/WeaponsController.gd" id="3_2vmnv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m748r"]
 height = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wec5q"]
+render_priority = 0
+shader = ExtResource("3_1gm3q")
+shader_parameter/outlineColor = Color(0, 0, 0, 0.78)
+shader_parameter/depth_threshold = 0.025
+shader_parameter/normal_threshold = 0.5
+shader_parameter/normal_smoothing = 0.25
+shader_parameter/max_thickness = 1.3
+shader_parameter/min_thickness = 0.5
+shader_parameter/max_distance = 75.0
+shader_parameter/min_distance = 2.0
+shader_parameter/grazing_fresnel_power = 5.0
+shader_parameter/grazing_angle_mask_power = 1.0
+shader_parameter/grazing_angle_modulation_factor = 50.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_rj4es"]
+material = SubResource("ShaderMaterial_wec5q")
+flip_faces = true
+size = Vector2(2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ta5h3"]
 albedo_color = Color(0, 0, 0, 1)
@@ -47,6 +68,10 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
 fov = 95.0
 
+[node name="Toon Shader" type="MeshInstance3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
+mesh = SubResource("QuadMesh_rj4es")
+
 [node name="Plasma Gun" type="MeshInstance3D" parent="Camera"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.5, -0.5, -1)
 mesh = SubResource("BoxMesh_djnlk")
@@ -59,12 +84,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 unique_name_in_owner = true
 visible = false
 target_position = Vector3(0, 0, -4)
+collision_mask = 5
 debug_shape_thickness = 5
 
 [node name="Weapon Ray" type="RayCast3D" parent="Camera"]
 unique_name_in_owner = true
 visible = false
 target_position = Vector3(0, 0, -999)
+collision_mask = 5
 debug_shape_thickness = 5
 
 [node name="Pickup Point" type="Marker3D" parent="Camera"]

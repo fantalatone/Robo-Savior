@@ -1,29 +1,53 @@
-[gd_scene load_steps=7 format=3 uid="uid://boao6whqtfiw7"]
+[gd_scene load_steps=9 format=3 uid="uid://boao6whqtfiw7"]
 
 [ext_resource type="Script" path="res://nodes/maps/game.gd" id="1_ems3d"]
 [ext_resource type="PackedScene" uid="uid://c6lar545dkqe1" path="res://nodes/maps/interior.tscn" id="2_eeofs"]
 [ext_resource type="Environment" uid="uid://xd8303ig1vf0" path="res://materials/enviroment.tres" id="2_o8x3i"]
-[ext_resource type="PackedScene" uid="uid://c6u3rwqla0qjk" path="res://nodes/gui/gui.tscn" id="3_02h0n"]
+[ext_resource type="PackedScene" uid="uid://c6u3rwqla0qjk" path="res://nodes/gui/gui.tscn" id="3_0bcnn"]
 [ext_resource type="PackedScene" uid="uid://cyy2edoh16aya" path="res://nodes/maps/exterior.tscn" id="3_413uk"]
+[ext_resource type="Shader" path="res://shaders/ps1-style.gdshader" id="4_1o81m"]
 [ext_resource type="PackedScene" uid="uid://phx308didjl5" path="res://nodes/systems/ufo.tscn" id="4_m4feq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lefx4"]
+shader = ExtResource("4_1o81m")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_ems3d")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Enviroment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_o8x3i")
 
-[node name="Exterior" parent="." instance=ExtResource("3_413uk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+[node name="Viewport Container" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_lefx4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+stretch = true
 
-[node name="Interior" parent="." instance=ExtResource("2_eeofs")]
+[node name="Viewport Main" type="SubViewport" parent="Viewport Container"]
+handle_input_locally = false
+size = Vector2i(1200, 640)
+render_target_update_mode = 4
+
+[node name="Interior" parent="Viewport Container/Viewport Main" instance=ExtResource("2_eeofs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 
-[node name="UFO" parent="." instance=ExtResource("4_m4feq")]
+[node name="Exterior" parent="Viewport Container/Viewport Main" instance=ExtResource("3_413uk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="UFO" parent="Viewport Container/Viewport Main" instance=ExtResource("4_m4feq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 17)
-SPAWN_COOLDOWN = 15.0
+SPAWN_COOLDOWN = 5.0
 
-[node name="GUI Layer" type="CanvasLayer" parent="."]
+[node name="UFO2" parent="Viewport Container/Viewport Main" instance=ExtResource("4_m4feq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 17)
+SPAWN_COOLDOWN = 5.0
 
-[node name="GUI" parent="GUI Layer" instance=ExtResource("3_02h0n")]
-mouse_filter = 2
+[node name="GUI" parent="Viewport Container/Viewport Main" instance=ExtResource("3_0bcnn")]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg0blj51pjg5k"]
+
+[ext_resource type="Script" path="res://nodes/items/DecalFragile.gd" id="1_joxhx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjbjo"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[node name="Decal Fragile" type="StaticBody3D" groups=["Fragiles"]]
+collision_layer = 2
+script = ExtResource("1_joxhx")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_pjbjo")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+size = Vector3(1.5, 1.5, 1.5)

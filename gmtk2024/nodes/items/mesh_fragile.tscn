@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpog2fwhyjiuy"]
+
+[ext_resource type="Script" path="res://nodes/items/MeshFragile.gd" id="1_bvrui"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v0tfw"]
+size = Vector3(1, 5.5, 0.75)
+
+[node name="Mesh Fragile" type="StaticBody3D" groups=["Fragiles"]]
+script = ExtResource("1_bvrui")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_v0tfw")
