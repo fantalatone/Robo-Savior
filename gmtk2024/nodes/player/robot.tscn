@@ -72,7 +72,6 @@ bones/6/position = Vector3(0.0041662, -0.00885649, 0.00506295)
 
 [node name="Plasma Gun" type="MeshInstance3D" parent="Camera"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 1, 0.506102, -0.17783, -0.320426)
-visible = false
 mesh = SubResource("BoxMesh_djnlk")
 skeleton = NodePath("../..")
 
@@ -104,14 +103,8 @@ PLASMA_GUN_FIRE_RATE = 0.3
 PLASMA_GUN_BARREL_POINT = NodePath("../Camera/Plasma Gun/Bullet Point")
 
 [node name="Plasma Gun Shoot" type="FmodEventEmitter3D" parent="." groups=["Sound"]]
-event_name = "event:/sfx/Footsteps/Robot_footsteps"
-event_guid = "{86cdd771-40bb-421d-85f1-2c3fd2c17d4e}"
-"event_parameter/Scale Change/id" = 7622125459741236795
-"event_parameter/Scale Change/value" = 0.0
-"event_parameter/Scale Change/min_value" = 0.0
-"event_parameter/Scale Change/max_value" = 1.0
-"event_parameter/Scale Change/default_value" = 0.0
-"event_parameter/Scale Change/variant_type" = 3
+event_name = "event:/sfx/Exterior_sounds/Lasershot"
+event_guid = "{ca424215-0eba-46c6-b40d-aa459a057cd6}"
 
 [node name="Footsteps" type="FmodEventEmitter3D" parent="." groups=["Sound"]]
 event_name = "event:/sfx/Footsteps/Robot_footsteps"

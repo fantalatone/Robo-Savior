@@ -6,7 +6,7 @@ func start_use():
 
 func stop_use():
 	super.stop_use()
-	$Sound.set_parameter("On Off", 1)
+	$Sound.stop()
 
 func _process(delta: float) -> void:
 	if is_being_used and INTERACTION.is_colliding():

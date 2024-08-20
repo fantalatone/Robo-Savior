@@ -24,14 +24,14 @@ var f_t : Timer = Timer.new()
 func _ready() -> void:
 	f_t.one_shot = false
 	add_child(f_t)
-	f_t.start(1.5)
+	f_t.start(1.0)
 	f_t.timeout.connect(footstep)
 	
 	instance = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func footstep() -> void:
-	if velocity.x != 0 or velocity.z != 0:
+	if (velocity.x != 0 and velocity.z != 0) and velocity.y == 0:
 		FOOTSTEPS.set_parameter("Scale Change", 1)
 		FOOTSTEPS.play()
 

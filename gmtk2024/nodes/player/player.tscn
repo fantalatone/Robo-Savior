@@ -86,6 +86,16 @@ script = ExtResource("5_tsqy4")
 type = 3
 visual = NodePath("../../Camera/Hand/Blowtorch")
 
+[node name="Sound" type="FmodEventEmitter3D" parent="Items/Blowtorch"]
+event_name = "event:/sfx/Inside_sounds/Blowtorch"
+event_guid = "{2033c891-72c7-4e5d-8077-b6400401f276}"
+event_parameter/On_Off/id = -6902697880674169232
+event_parameter/On_Off/value = 0.0
+event_parameter/On_Off/min_value = 0.0
+event_parameter/On_Off/max_value = 1.0
+event_parameter/On_Off/default_value = 0.0
+event_parameter/On_Off/variant_type = 3
+
 [node name="Drill" type="Node3D" parent="Items" node_paths=PackedStringArray("visual")]
 script = ExtResource("8_k1i3m")
 type = 1
@@ -95,7 +105,7 @@ visual = NodePath("../../Camera/Hand/Drill")
 event_name = "event:/sfx/Inside_sounds/Drill"
 event_guid = "{d4a5ce31-ef45-4e3c-b8b3-3a3f0b42ead8}"
 event_parameter/On_Off/id = -6902697880674169232
-event_parameter/On_Off/value = 0.0
+event_parameter/On_Off/value = 1.0
 event_parameter/On_Off/min_value = 0.0
 event_parameter/On_Off/max_value = 1.0
 event_parameter/On_Off/default_value = 0.0
@@ -105,6 +115,10 @@ event_parameter/On_Off/variant_type = 3
 script = ExtResource("3_ovgei")
 type = 2
 visual = NodePath("../../Camera/Hand/Hammer")
+
+[node name="Sound" type="FmodEventEmitter3D" parent="Items/Hammer"]
+event_name = "event:/sfx/Inside_sounds/Hammer"
+event_guid = "{0eef8b61-3d96-481c-8d18-20df71ccad67}"
 
 [node name="Footstep Sound" type="FmodEventEmitter3D" parent="." groups=["Sound"]]
 event_name = "event:/sfx/Footsteps/Footsteps"

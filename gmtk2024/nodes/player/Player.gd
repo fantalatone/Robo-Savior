@@ -72,7 +72,8 @@ func handle_interactions() -> bool:
 		var obj = INTERACTION_RAY.get_collider()
 		if obj.is_in_group("Items"): 
 			if obj.type == Interaction.INTERACTION_TYPE.BUTTON: 
-				obj._press()
+				if not is_holding_item:
+					obj._press()
 				return true
 			interact_with_items(obj)
 			return true

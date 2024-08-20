@@ -6,4 +6,5 @@ func start_use():
 		var obj = INTERACTION.get_collider()
 		if obj.is_in_group("Fragiles"):
 			if obj.item_type == type:
+				$Sound.play()
 				obj._try_to_fix()
