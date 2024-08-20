@@ -1,11 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmnp3msggvegb"]
+[gd_scene load_steps=3 format=3 uid="uid://dmnp3msggvegb"]
 
 [ext_resource type="Script" path="res://nodes/Menu.gd" id="1_pyhnw"]
-[ext_resource type="FontFile" uid="uid://teu4n5kt6uk3" path="res://assets/font/VCR_OSD_MONO_1.001.ttf" id="1_rcf7s"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_b64mb"]
-font = ExtResource("1_rcf7s")
-font_size = 48
+[ext_resource type="Texture2D" uid="uid://cys23e4es2euc" path="res://Start.png" id="2_cyu8o"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -16,51 +12,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pyhnw")
 
-[node name="Title" type="Label" parent="."]
+[node name="Texture" type="TextureButton" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "WORLD SAVER"
-label_settings = SubResource("LabelSettings_b64mb")
+texture_normal = ExtResource("2_cyu8o")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Play Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = 163.0
-offset_right = 24.0
-offset_bottom = 194.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "PLAY"
-
-[node name="Quit Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = 207.0
-offset_right = 24.0
-offset_bottom = 238.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "QUIT"
-
-[connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="Quit Button" to="." method="_on_quit_button_pressed"]
+[node name="FmodEventEmitter3D" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/music/Jazz_radiomusic"
+event_guid = "{910d09db-3a77-4b2a-9092-9a302bbeaedb}"
+autoplay = true
+"event_parameter/Scale Change/id" = 7622125459741236795
+"event_parameter/Scale Change/value" = 0.0
+"event_parameter/Scale Change/min_value" = 0.0
+"event_parameter/Scale Change/max_value" = 1.0
+"event_parameter/Scale Change/default_value" = 0.0
+"event_parameter/Scale Change/variant_type" = 3

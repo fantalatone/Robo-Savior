@@ -12,6 +12,7 @@ const MOUSE_SENSIVITY : float = 0.5
 @onready var HEALTH : HealthSystem = $"Health System"
 
 @onready var FOOTSTEPS : FmodEventEmitter3D = $"Footsteps"
+@onready var JUMP : FmodEventEmitter3D = $"Jump"
 
 var camera_pitch : float = 0.0
 
@@ -41,6 +42,7 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_pressed("fly") and is_being_controlled and is_on_floor(): 
 		handle_flight(delta)
+		JUMP.play()
 
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -54,9 +56,6 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, MOVEMENT_SPEED)
 
 	move_and_slide()
-	
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
 
 func _damage(): 
 	get_node("Robot Damage Sound").play()

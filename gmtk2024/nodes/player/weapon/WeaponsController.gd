@@ -70,7 +70,6 @@ func _process(_delta: float) -> void:
 		handle_reload()
 		return
 	
-	current_plasma_ammo -= 1
 	plasma_gun_timer.start(PLASMA_GUN_FIRE_RATE)
 	spawn_plasma_bullet()
 	shoot()

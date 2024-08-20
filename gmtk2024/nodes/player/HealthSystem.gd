@@ -23,13 +23,12 @@ func _add_damage_point( amount: int ) -> void:
 	CURRENT_TOTAL_DAMAGE += amount
 	
 	if CURRENT_TOTAL_DAMAGE == DAMAGE_TO_EXPLODE:
-		death_timer.start(20)
+		_death()
 	
 	GUIController.instance.HEALTH_LABEL.text = str(CURRENT_TOTAL_DAMAGE)
 
 func _death() -> void:
-	print("Ded!")
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://nodes/death_screen.tscn")
 
 func _remove_damage_point() -> void:
 	CURRENT_TOTAL_DAMAGE -= 1

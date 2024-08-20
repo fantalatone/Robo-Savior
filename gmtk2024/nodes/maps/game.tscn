@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://boao6whqtfiw7"]
+[gd_scene load_steps=10 format=3 uid="uid://boao6whqtfiw7"]
 
 [ext_resource type="Script" path="res://nodes/maps/game.gd" id="1_ems3d"]
 [ext_resource type="PackedScene" uid="uid://c6lar545dkqe1" path="res://nodes/maps/interior.tscn" id="2_eeofs"]
 [ext_resource type="Environment" uid="uid://xd8303ig1vf0" path="res://materials/enviroment.tres" id="2_o8x3i"]
+[ext_resource type="PackedScene" uid="uid://njat8uknrvqn" path="res://game_music.tscn" id="2_tbxoi"]
 [ext_resource type="PackedScene" uid="uid://c6u3rwqla0qjk" path="res://nodes/gui/gui.tscn" id="3_0bcnn"]
 [ext_resource type="PackedScene" uid="uid://cyy2edoh16aya" path="res://nodes/maps/exterior.tscn" id="3_413uk"]
 [ext_resource type="Shader" path="res://shaders/ps1-style.gdshader" id="4_1o81m"]
@@ -17,6 +18,9 @@ shader_parameter/dither_size = 1
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_ems3d")
+
+[node name="Game Music" parent="." instance=ExtResource("2_tbxoi")]
+autoplay = true
 
 [node name="Enviroment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_o8x3i")

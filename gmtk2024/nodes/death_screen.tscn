@@ -1,14 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmvcmcct7edhe"]
+[gd_scene load_steps=3 format=3 uid="uid://cmvcmcct7edhe"]
 
-[ext_resource type="FontFile" uid="uid://teu4n5kt6uk3" path="res://assets/font/VCR_OSD_MONO_1.001.ttf" id="1_6jnap"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ayyh7"]
-font = ExtResource("1_6jnap")
-font_size = 64
-
-[sub_resource type="LabelSettings" id="LabelSettings_dskl7"]
-font = ExtResource("1_6jnap")
-font_size = 32
+[ext_resource type="Script" path="res://nodes/death_screen.gd" id="1_6i7sw"]
+[ext_resource type="Texture2D" uid="uid://cil1il02u604n" path="res://nodes/Death_screen.png" id="1_bqy7a"]
 
 [node name="Death Screen" type="Control"]
 layout_mode = 3
@@ -17,35 +10,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6i7sw")
 
-[node name="Title" type="Label" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -169.0
-offset_top = -28.5
-offset_right = 169.0
-offset_bottom = 28.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "You dead!"
-label_settings = SubResource("LabelSettings_ayyh7")
-
-[node name="Label2" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -422.0
-offset_top = 89.5
-offset_right = 422.0
-offset_bottom = 118.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Play again by closing and opening the game :D"
-label_settings = SubResource("LabelSettings_dskl7")
+texture = ExtResource("1_bqy7a")
+expand_mode = 1

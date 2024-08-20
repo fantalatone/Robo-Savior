@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c6lar545dkqe1"]
+[gd_scene load_steps=24 format=3 uid="uid://c6lar545dkqe1"]
 
 [ext_resource type="Script" path="res://nodes/maps/interior.gd" id="1_4yc2e"]
 [ext_resource type="Script" path="res://nodes/items/FragilesController.gd" id="2_dlw3l"]
@@ -7,15 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://bpvhhwcjiqrvu" path="res://assets/blender/Hammer.glb" id="4_rrt7u"]
 [ext_resource type="PackedScene" uid="uid://d2k5o7e0bm87j" path="res://nodes/items/item_interaction.tscn" id="5_0ov5v"]
 [ext_resource type="Texture2D" uid="uid://234rog65la2g" path="res://assets/textures/Decal/Crack.png" id="5_lkawo"]
-[ext_resource type="PackedScene" uid="uid://ctq4tlnrxy22k" path="res://assets/blender/drill.glb" id="7_pkumj"]
 [ext_resource type="PackedScene" uid="uid://blpapbqc7oruu" path="res://nodes/items/button_interaction.tscn" id="8_q2dqk"]
 [ext_resource type="PackedScene" uid="uid://msdys8cw2sq0" path="res://assets/blender/controlDesk.fbx" id="9_e61vt"]
 [ext_resource type="PackedScene" uid="uid://bg0blj51pjg5k" path="res://nodes/items/decal_fragile.tscn" id="10_cw1rk"]
 [ext_resource type="PackedScene" uid="uid://d0vbudpwbviv5" path="res://assets/blender/controlChair.fbx" id="10_n1vri"]
 [ext_resource type="Material" uid="uid://dwj5dx6x1r82h" path="res://materials/interior.tres" id="10_ri2jc"]
 [ext_resource type="PackedScene" uid="uid://ydomrh28uor8" path="res://assets/blender/pipes/Pipe_Long_Broken_M.fbx" id="11_175rf"]
-[ext_resource type="PackedScene" uid="uid://wndeu7m0fnm2" path="res://assets/blender/Screw.fbx" id="12_cfhw3"]
-[ext_resource type="Shape3D" uid="uid://cprdkrf4o507f" path="res://screw_col.tres" id="12_oyqbs"]
 [ext_resource type="PackedScene" uid="uid://c7rionawc6qel" path="res://assets/blender/pipes/Pipe_Round.fbx" id="12_tsxjp"]
 [ext_resource type="PackedScene" uid="uid://bg3djfm5v7kvv" path="res://assets/blender/pipes/Pipe_Long_Broken_H.fbx" id="12_w0g8d"]
 [ext_resource type="PackedScene" uid="uid://dpog2fwhyjiuy" path="res://nodes/items/mesh_fragile.tscn" id="12_y5clt"]
@@ -45,7 +42,7 @@ floor_max_angle = 1.22173
 floor_snap_length = 0.4
 
 [node name="Item Interaction2" parent="." instance=ExtResource("5_0ov5v")]
-transform = Transform3D(0.693653, 0, 0.720309, 0, 1, 0, -0.720309, 0, 0.693653, -2.45091, 1.58264, 4.92734)
+transform = Transform3D(-0.61485, 0, -0.788644, 0, 1, 0, 0.788644, 0, -0.61485, -4.49686, 1.58264, -5.04446)
 item_type = 2
 
 [node name="Hammer" parent="Item Interaction2" instance=ExtResource("4_rrt7u")]
@@ -57,13 +54,6 @@ item_type = 3
 
 [node name="Blowtorch" parent="Item Interaction3" instance=ExtResource("4_06tda")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, 0)
-
-[node name="Item Interaction4" parent="." instance=ExtResource("5_0ov5v")]
-transform = Transform3D(-0.931843, 0, -0.362861, 0, 1, 0, 0.362861, 0, -0.931843, -5.65428, 1.66032, -5.11325)
-item_type = 1
-
-[node name="Drill" parent="Item Interaction4" instance=ExtResource("7_pkumj")]
-transform = Transform3D(6, 0, 0, 0, -2.62268e-07, -6, 0, 6, -2.62268e-07, 0.166333, 0.186083, 0.593046)
 
 [node name="Pipes" type="Node3D" parent="."]
 
@@ -89,6 +79,23 @@ visible = false
 transform = Transform3D(-2.18557e-07, 1.91882, -4.61716, -5, -8.38742e-08, 2.01822e-07, 0, 4.61716, 1.91882, 4.35079e-08, 0.995345, 3.72529e-08)
 visible = false
 
+[node name="Sound" type="FmodEventEmitter3D" parent="Pipes/Mesh Fragile2"]
+event_name = "event:/sfx/Inside_sounds/Pipe_gas"
+event_guid = "{51a5b0af-8626-4bbb-b754-77290d647160}"
+"event_parameter/Scale Change/id" = 7622125459741236795
+"event_parameter/Scale Change/value" = 0.0
+"event_parameter/Scale Change/min_value" = 0.0
+"event_parameter/Scale Change/max_value" = 1.0
+"event_parameter/Scale Change/default_value" = 0.0
+"event_parameter/Scale Change/variant_type" = 3
+event_parameter/On_Off/id = -6902697880674169232
+event_parameter/On_Off/value = 0.0
+event_parameter/On_Off/min_value = 0.0
+event_parameter/On_Off/max_value = 1.0
+event_parameter/On_Off/default_value = 0.0
+event_parameter/On_Off/variant_type = 3
+transform = Transform3D(-2.18557e-08, -1, -3.78552e-08, 0.484642, -4.37046e-08, 0.874712, -0.874712, 7.71243e-10, 0.484642, -5.96046e-08, 0.830169, 0.71546)
+
 [node name="Mesh Fragile3" parent="Pipes" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
 transform = Transform3D(-2.18557e-08, 0.484642, -0.874713, -1, -4.37046e-08, 7.7126e-10, -3.78552e-08, 0.874713, 0.484642, 6.70962, 0.972312, -9.30865)
 high_damage_node = NodePath("Pipe_Long_Broken_H")
@@ -110,6 +117,23 @@ visible = false
 [node name="Pipe_Long_Broken_H" parent="Pipes/Mesh Fragile3" instance=ExtResource("12_w0g8d")]
 transform = Transform3D(-2.18557e-07, 1.91882, -4.61716, -5, -8.38742e-08, 2.01822e-07, 0, 4.61716, 1.91882, 4.35079e-08, 0.995345, 3.72529e-08)
 visible = false
+
+[node name="Sound" type="FmodEventEmitter3D" parent="Pipes/Mesh Fragile3"]
+event_name = "event:/sfx/Inside_sounds/Pipe_gas"
+event_guid = "{51a5b0af-8626-4bbb-b754-77290d647160}"
+"event_parameter/Scale Change/id" = 7622125459741236795
+"event_parameter/Scale Change/value" = 0.0
+"event_parameter/Scale Change/min_value" = 0.0
+"event_parameter/Scale Change/max_value" = 1.0
+"event_parameter/Scale Change/default_value" = 0.0
+"event_parameter/Scale Change/variant_type" = 3
+event_parameter/On_Off/id = -6902697880674169232
+event_parameter/On_Off/value = 0.0
+event_parameter/On_Off/min_value = 0.0
+event_parameter/On_Off/max_value = 1.0
+event_parameter/On_Off/default_value = 0.0
+event_parameter/On_Off/variant_type = 3
+transform = Transform3D(-2.18557e-08, -1, -3.78552e-08, 0.484642, -4.37046e-08, 0.874712, -0.874712, 7.71243e-10, 0.484642, -3.57628e-07, 0.999739, -0.120793)
 
 [node name="Mesh Fragile4" parent="Pipes" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
 transform = Transform3D(-2.18557e-08, 0.484642, -0.874713, -1, -4.37046e-08, 7.7126e-10, -3.78552e-08, 0.874713, 0.484642, 8.42331, 2.83589, -6.22952)
@@ -133,6 +157,23 @@ visible = false
 transform = Transform3D(-2.18557e-07, 1.91882, -4.61716, -5, -8.38742e-08, 2.01822e-07, 0, 4.61716, 1.91882, 4.35079e-08, 0.995345, 3.72529e-08)
 visible = false
 
+[node name="Sound" type="FmodEventEmitter3D" parent="Pipes/Mesh Fragile4"]
+event_name = "event:/sfx/Inside_sounds/Pipe_gas"
+event_guid = "{51a5b0af-8626-4bbb-b754-77290d647160}"
+"event_parameter/Scale Change/id" = 7622125459741236795
+"event_parameter/Scale Change/value" = 0.0
+"event_parameter/Scale Change/min_value" = 0.0
+"event_parameter/Scale Change/max_value" = 1.0
+"event_parameter/Scale Change/default_value" = 0.0
+"event_parameter/Scale Change/variant_type" = 3
+event_parameter/On_Off/id = -6902697880674169232
+event_parameter/On_Off/value = 0.0
+event_parameter/On_Off/min_value = 0.0
+event_parameter/On_Off/max_value = 1.0
+event_parameter/On_Off/default_value = 0.0
+event_parameter/On_Off/variant_type = 3
+transform = Transform3D(-2.18557e-08, -1, -3.78552e-08, 0.484642, -4.37046e-08, 0.874712, -0.874712, 7.71243e-10, 0.484642, 0, 1.16085, -0.0500851)
+
 [node name="Mesh Fragile5" parent="Pipes" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
 transform = Transform3D(-2.18557e-08, 0.484642, -0.874713, -1, -4.37046e-08, 7.7126e-10, -3.78552e-08, 0.874713, 0.484642, 6.71584, 2.83589, -9.31127)
 high_damage_node = NodePath("Pipe_Long_Broken_H")
@@ -155,307 +196,22 @@ visible = false
 transform = Transform3D(-2.18557e-07, 1.91882, -4.61716, -5, -8.38742e-08, 2.01822e-07, 0, 4.61716, 1.91882, 4.35079e-08, 0.995345, 3.72529e-08)
 visible = false
 
-[node name="Screws" type="Node3D" parent="."]
-
-[node name="Mesh Fragile2" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(-2.18557e-08, 0.484642, -0.874713, -1, -4.37046e-08, 7.7126e-10, -3.78552e-08, 0.874713, 0.484642, 3.61723, 0.284204, -1.95854)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile2" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.217743, 0.117724, 0.0287051)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile2" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile2"]
-visible = false
-
-[node name="Mesh Fragile3" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(4.17672e-08, -0.950168, 0.311738, -1, -4.37046e-08, 7.71261e-10, 1.28916e-08, -0.311738, -0.950168, 1.7175, 0.284204, -5.53598)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile3" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile3" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile3"]
-visible = false
-
-[node name="Mesh Fragile5" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(-1.93334e-09, 0.0618497, 0.998086, -1, -4.37046e-08, 7.71261e-10, 4.36686e-08, -0.998086, 0.0618497, 2.44903, 0.284204, 6.04979)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile5" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile5" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile5"]
-visible = false
-
-[node name="Mesh Fragile6" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(4.13708e-08, -0.952001, -0.306094, -1, -4.37046e-08, 7.71261e-10, -1.4112e-08, 0.306094, -0.952001, 5.4461, 0.284204, 6.58611)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile6" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile6" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile6"]
-visible = false
-
-[node name="Mesh Fragile7" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(-3.94339e-08, 0.909614, 0.415456, -1, -4.37046e-08, 7.71262e-10, 1.88589e-08, -0.415456, 0.909614, 6.04176, 0.284204, 2.17632)
-collision_layer = 256
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile7" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile7" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile7"]
-visible = false
-
-[node name="Mesh Fragile8" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(-1.11449e-09, 0.0078541, -0.999969, -1, -4.37046e-08, 7.71259e-10, -4.36972e-08, 0.999969, 0.0078541, 8.932, 0.284204, 4.14116)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile8" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile8" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile8"]
-visible = false
-
-[node name="Mesh Fragile9" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(4.3562e-08, -0.997885, -0.0650028, -1, -4.37046e-08, 7.71259e-10, -3.61054e-09, 0.0650028, -0.997885, 8.28582, 0.284204, -3.44305)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile9" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile9" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile9"]
-visible = false
-
-[node name="Mesh Fragile10" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(2.5315e-08, -0.564665, 0.825321, -1, -4.37046e-08, 7.71259e-10, 3.56348e-08, -0.825321, -0.564665, -3.28387, 1.87358, -4.77641)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile10" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile10" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile10"]
-visible = false
-
-[node name="Mesh Fragile11" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(2.5315e-08, -0.564665, 0.825321, -1, -4.37046e-08, 7.71259e-10, 3.56348e-08, -0.825321, -0.564665, -1.89741, 1.87358, -3.8602)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile11" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile11" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile11"]
-visible = false
-
-[node name="Mesh Fragile12" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(-3.50977e-08, 0.792301, -0.610131, -1, -4.37046e-08, 7.71261e-10, -2.60545e-08, 0.610131, 0.792301, -1.15531, 1.87358, -7.59076)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile12" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile12" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile12"]
-visible = false
-
-[node name="Mesh Fragile13" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(8.68325e-09, -0.215911, -0.976413, -1, -4.37046e-08, 7.71263e-10, -4.28403e-08, 0.976413, -0.215911, -7.81817, 1.87358, -7.82499)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile13" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile13" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile13"]
-visible = false
-
-[node name="Mesh Fragile14" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(-2.97625e-08, 0.667859, -0.744288, -1, -4.37046e-08, 7.71264e-10, -3.20137e-08, 0.744288, 0.667859, -4.15921, 1.87358, 1.15039)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile14" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile14" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile14"]
-visible = false
-
-[node name="Mesh Fragile15" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(-3.99348e-08, 0.920634, 0.390426, -1, -4.37046e-08, 7.71264e-10, 1.77734e-08, -0.390426, 0.920634, -1.5034, 1.87358, 5.97145)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile15" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile15" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile15"]
-visible = false
-
-[node name="Mesh Fragile16" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(-2.97407e-08, 0.667352, -0.744743, -1, -4.37046e-08, 7.71262e-10, -3.2034e-08, 0.744743, 0.667352, -6.83664, 1.87358, 7.21351)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile16" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile16" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile16"]
-visible = false
-
-[node name="Mesh Fragile4" parent="Screws" node_paths=PackedStringArray("high_damage_node", "medium_damage_node", "low_damage_node") instance=ExtResource("12_y5clt")]
-transform = Transform3D(-3.87266e-08, 0.894006, 0.448056, -1, -4.37046e-08, 7.71261e-10, 2.02716e-08, -0.448056, 0.894006, 3.48412, 0.284204, -7.46512)
-collision_layer = 0
-high_damage_node = NodePath("Screw")
-medium_damage_node = NodePath("Screw")
-low_damage_node = NodePath("Screw Low")
-item_type = 1
-FIX_COUNT = 5
-
-[node name="Collision" parent="Screws/Mesh Fragile4" index="0"]
-transform = Transform3D(1, -3.55271e-15, 6.03961e-14, -7.10543e-14, 1, 0, 7.10543e-15, 0, 1, 0.0160827, 0.153125, 0.0287046)
-shape = ExtResource("12_oyqbs")
-
-[node name="Screw" parent="Screws/Mesh Fragile4" instance=ExtResource("12_cfhw3")]
-transform = Transform3D(0.182, 0.0387992, -0.0732848, -0.0386611, 0.196073, 0.00779349, 0.0733577, 0.0070743, 0.185926, 0, 0, 0)
-visible = false
-
-[node name="Screw Low" type="Node3D" parent="Screws/Mesh Fragile4"]
-visible = false
+[node name="Sound" type="FmodEventEmitter3D" parent="Pipes/Mesh Fragile5"]
+event_name = "event:/sfx/Inside_sounds/Pipe_gas"
+event_guid = "{51a5b0af-8626-4bbb-b754-77290d647160}"
+"event_parameter/Scale Change/id" = 7622125459741236795
+"event_parameter/Scale Change/value" = 0.0
+"event_parameter/Scale Change/min_value" = 0.0
+"event_parameter/Scale Change/max_value" = 1.0
+"event_parameter/Scale Change/default_value" = 0.0
+"event_parameter/Scale Change/variant_type" = 3
+event_parameter/On_Off/id = -6902697880674169232
+event_parameter/On_Off/value = 0.0
+event_parameter/On_Off/min_value = 0.0
+event_parameter/On_Off/max_value = 1.0
+event_parameter/On_Off/default_value = 0.0
+event_parameter/On_Off/variant_type = 3
+transform = Transform3D(-2.18557e-08, -1, -3.78552e-08, 0.484642, -4.37046e-08, 0.874712, -0.874712, 7.71243e-10, 0.484642, 0, 0.984448, -0.0216131)
 
 [node name="Decal Fragile" parent="." instance=ExtResource("10_cw1rk")]
 transform = Transform3D(-4.37114e-08, 0, 0.26, 0, 1, 0, -1, 0, -1.1365e-08, -9.5, 2.63502, -3.23367)
@@ -595,19 +351,4 @@ shape = SubResource("ConcavePolygonShape3D_rb712")
 [editable path="Pipes/Mesh Fragile3"]
 [editable path="Pipes/Mesh Fragile4"]
 [editable path="Pipes/Mesh Fragile5"]
-[editable path="Screws/Mesh Fragile2"]
-[editable path="Screws/Mesh Fragile3"]
-[editable path="Screws/Mesh Fragile5"]
-[editable path="Screws/Mesh Fragile6"]
-[editable path="Screws/Mesh Fragile7"]
-[editable path="Screws/Mesh Fragile8"]
-[editable path="Screws/Mesh Fragile9"]
-[editable path="Screws/Mesh Fragile10"]
-[editable path="Screws/Mesh Fragile11"]
-[editable path="Screws/Mesh Fragile12"]
-[editable path="Screws/Mesh Fragile13"]
-[editable path="Screws/Mesh Fragile14"]
-[editable path="Screws/Mesh Fragile15"]
-[editable path="Screws/Mesh Fragile16"]
-[editable path="Screws/Mesh Fragile4"]
 [editable path="Interior"]

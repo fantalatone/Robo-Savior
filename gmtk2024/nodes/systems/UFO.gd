@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var SPIDER := preload("res://nodes/enemies/spider.tscn")
+@onready var EYEBULL := preload("res://nodes/enemies/eyebull.tscn")
 
 const SPAWN_RADIUS = 50
 @export var SPAWN_COOLDOWN : float
@@ -37,6 +38,11 @@ func spawn_enemy() -> void:
 	cooldown_timer.start(SPAWN_COOLDOWN)
 	cooldown_timer.timeout.connect(func(): start_spawning())
 	
+	if randf() < 0.25:
+		var ey = EYEBULL.instantiate()
+		get_tree().current_scene.add_child(ey)
+		ey.global_position = global_position
+		return
 	var e = SPIDER.instantiate()
 	get_tree().current_scene.add_child(e)
 	e.global_position = global_position

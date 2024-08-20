@@ -48,8 +48,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and is_being_controlled:
@@ -113,5 +111,6 @@ func _enable_input() -> void:
 
 func _disable_audio() -> void:
 	pass
+
 func _enable_audio() -> void:
 	pass

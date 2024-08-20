@@ -129,3 +129,5 @@ event_guid = "{b6376588-4a73-43a5-8a5e-96c33d8d3234}"
 "event_parameter/Scale Change/max_value" = 1.0
 "event_parameter/Scale Change/default_value" = 0.0
 "event_parameter/Scale Change/variant_type" = 3
+
+[node name="Listener" type="FmodListener3D" parent="."]
