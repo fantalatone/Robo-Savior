@@ -25,13 +25,12 @@ func _change_scale() -> void:
 		match current_scale:
 			SCALE.HUMAN:
 				human._enable_input()
+				human._enable_audio()
 				robot._disable_input()
+				robot._disable_audio()
 			SCALE.ROBOT:
 				human._disable_input()
+				human._disable_audio()
 				robot._enable_input()
-
-func change_sound_scale_parameter():
-	for c in get_tree().current_scene.get_children(true):
-		if c is FmodEventEmitter3D:
-			var f : FmodEventEmitter3D = c
-			#f["event_parameter/Scale Change/value"] = 1
+				robot._enable_audio()
+				

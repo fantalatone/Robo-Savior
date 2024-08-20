@@ -11,15 +11,29 @@ const MOUSE_SENSIVITY : float = 0.5
 @onready var WEAPONS : WeaponsController = $Weapons
 @onready var HEALTH : HealthSystem = $"Health System"
 
+@onready var FOOTSTEPS : FmodEventEmitter3D = $"Footsteps"
+
 var camera_pitch : float = 0.0
 
 var is_being_controlled : bool = false
 
 static var instance : Robot
 
+var f_t : Timer = Timer.new()
+
 func _ready() -> void:
+	f_t.one_shot = false
+	add_child(f_t)
+	f_t.start(1.5)
+	f_t.timeout.connect(footstep)
+	
 	instance = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func footstep() -> void:
+	if velocity.x != 0 or velocity.z != 0:
+		FOOTSTEPS.set_parameter("Scale Change", 1)
+		FOOTSTEPS.play()
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -83,3 +97,9 @@ func _disable_input() -> void:
 func _enable_input() -> void:
 	CAM.make_current()
 	is_being_controlled = true
+
+func _disable_audio() -> void:
+	FOOTSTEPS.set_parameter("Scale Change", 0)
+
+func _enable_audio() -> void:
+	FOOTSTEPS.set_parameter("Scale Change", 1)

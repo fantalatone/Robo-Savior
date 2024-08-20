@@ -103,11 +103,27 @@ MAX_PLASMA_GUN_AMMO = 50
 PLASMA_GUN_FIRE_RATE = 0.3
 PLASMA_GUN_BARREL_POINT = NodePath("../Camera/Plasma Gun/Bullet Point")
 
-[node name="Plasma Gun Shoot" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/sfx/Exterior_sounds/Lasershot"
-event_guid = "{ca424215-0eba-46c6-b40d-aa459a057cd6}"
+[node name="Plasma Gun Shoot" type="FmodEventEmitter3D" parent="." groups=["Sound"]]
+event_name = "event:/sfx/Footsteps/Robot_footsteps"
+event_guid = "{86cdd771-40bb-421d-85f1-2c3fd2c17d4e}"
+"event_parameter/Scale Change/id" = 7622125459741236795
+"event_parameter/Scale Change/value" = 0.0
+"event_parameter/Scale Change/min_value" = 0.0
+"event_parameter/Scale Change/max_value" = 1.0
+"event_parameter/Scale Change/default_value" = 0.0
+"event_parameter/Scale Change/variant_type" = 3
 
-[node name="Robot Damage Sound" type="FmodEventEmitter3D" parent="."]
+[node name="Footsteps" type="FmodEventEmitter3D" parent="." groups=["Sound"]]
+event_name = "event:/sfx/Footsteps/Robot_footsteps"
+event_guid = "{86cdd771-40bb-421d-85f1-2c3fd2c17d4e}"
+"event_parameter/Scale Change/id" = 7622125459741236795
+"event_parameter/Scale Change/value" = 0.0
+"event_parameter/Scale Change/min_value" = 0.0
+"event_parameter/Scale Change/max_value" = 1.0
+"event_parameter/Scale Change/default_value" = 0.0
+"event_parameter/Scale Change/variant_type" = 3
+
+[node name="Robot Damage Sound" type="FmodEventEmitter3D" parent="." groups=["Sound"]]
 event_name = "event:/sfx/Exterior_sounds/Robot_damage"
 event_guid = "{9c70d44d-2661-4b1d-ab55-589e13839656}"
 

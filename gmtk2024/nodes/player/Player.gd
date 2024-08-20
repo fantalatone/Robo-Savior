@@ -21,12 +21,16 @@ var holding_item_type : Interaction.ITEM_TYPE
 #@onready var LISTENER : FmodListener3D = $Listener
 @onready var FOOTSTEPS : FmodEventEmitter3D = $"Footstep Sound"
 
+var f_t : Timer = Timer.new()
+
 func _ready() -> void:
-	
+	f_t.one_shot = false
+	add_child(f_t)
+	f_t.start(0.45)
+	f_t.timeout.connect(footstep)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
-	#Robot.instance.HEALTH.damage_taken.connect(func(): print("Hi from player"))
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 3.0
@@ -38,9 +42,6 @@ func _physics_process(delta: float) -> void:
 	if direction and is_being_controlled:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		
-		if randf() < 0.01:
-			FOOTSTEPS.play()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -57,6 +58,10 @@ func _input(event: InputEvent) -> void:
 				use_item()
 		if event.is_released() and is_holding_item:
 			ITEMS_CONTROLLER.stop_using_item(holding_item_type)
+
+func footstep() -> void:
+	if velocity != Vector3.ZERO:
+		FOOTSTEPS.play()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and is_being_controlled:
@@ -104,3 +109,8 @@ func _disable_input() -> void:
 func _enable_input() -> void:
 	CAM.make_current()
 	is_being_controlled = true
+
+func _disable_audio() -> void:
+	pass
+func _enable_audio() -> void:
+	pass
